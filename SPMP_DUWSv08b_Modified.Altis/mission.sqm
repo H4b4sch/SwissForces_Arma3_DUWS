@@ -1,0 +1,522 @@
+version=12;
+class Mission
+{
+	addOns[]=
+	{
+		"a3_map_stratis",
+		"A3_Characters_F_OPFOR",
+		"A3_Characters_F_Civil",
+		"A3_Characters_F_INDEP",
+		"A3_Characters_F_BLUFOR",
+		"a3_characters_f_beta",
+		"a3_map_altis",
+		"A3_Modules_F_Supports",
+		"A3_Modules_F_Marta",
+		"A3_Armor_F_Slammer",
+		"A3_Characters_F_Gamma",
+		"a3_uav_f_characters_f_gamma",
+		"A3_Modules_F_Supports",
+		"A3_Modules_F_Sites",
+		"A3_Modules_F_GroupModifiers",
+		"a3_weapons_f_gamma_ammoboxes",
+		"A3_Air_F_Beta_Heli_Transport_02",
+		"A3_Soft_F_Car",
+		"A3_Air_F_Gamma_UAV_02",
+		"A3_Soft_F_Crusher_UGV",
+		"A3_Boat_F_Trawler",
+		"A3_Soft_F_Gamma_HEMTT",
+		"A3_Boat_F_Civilian_Boat",
+		"A3_Soft_F_SUV",
+		"A3_Soft_F_Offroad_01",
+		"A3_Armor_F_Panther",
+		"A3_Boat_F_SDV_01",
+		"A3_Soft_F_HEMTT",
+		"A3_Boat_F_Boat_Armed_01",
+		"A3_Air_F_Heli_Light_01",
+		"a3_map_Altis",
+		"A3_Misc_F_Helpers",
+		"A3_Signs_F",
+		"A3_Armor_F_AMV",
+		"A3_Air_F_Beta_Heli_Transport_01",
+		"A3_Weapons_F_Ammoboxes",
+		"a3_weapons_f_beta_ammoboxes",
+		"A3_Soft_F_MRAP_01",
+		"A3_Structures_F_Mil_Helipads",
+		"A3_Boat_F_Boat_Transport_01",
+	};
+	addOnsAuto[]=
+	{
+		"A3_Characters_F_OPFOR",
+		"A3_Characters_F_Civil",
+		"A3_Characters_F_INDEP",
+		"A3_Characters_F_BLUFOR",
+		"a3_characters_f_beta",
+		"a3_map_altis",
+		"A3_Modules_F_Supports",
+		"A3_Modules_F_Marta",
+		"A3_Armor_F_Slammer",
+		"A3_Characters_F_Gamma",
+		"a3_uav_f_characters_f_gamma",
+		"A3_Modules_F_Supports",
+		"A3_Modules_F_Sites",
+		"A3_Modules_F_GroupModifiers",
+		"a3_weapons_f_gamma_ammoboxes",
+		"A3_Air_F_Beta_Heli_Transport_02",
+		"A3_Soft_F_Car",
+		"A3_Air_F_Gamma_UAV_02",
+		"A3_Soft_F_Crusher_UGV",
+		"A3_Boat_F_Trawler",
+		"A3_Soft_F_Gamma_HEMTT",
+		"A3_Boat_F_Civilian_Boat",
+		"A3_Soft_F_SUV",
+		"A3_Soft_F_Offroad_01",
+		"A3_Armor_F_Panther",
+		"A3_Boat_F_SDV_01",
+		"A3_Soft_F_HEMTT",
+		"A3_Boat_F_Boat_Armed_01",
+		"A3_Air_F_Heli_Light_01",
+		"a3_map_Altis",
+		"A3_Misc_F_Helpers",
+		"A3_Signs_F",
+		"A3_Armor_F_AMV",
+		"A3_Air_F_Beta_Heli_Transport_01",
+		"A3_Weapons_F_Ammoboxes",
+		"a3_weapons_f_beta_ammoboxes",
+		"A3_Soft_F_MRAP_01",
+		"A3_Structures_F_Mil_Helipads",
+		"A3_Boat_F_Boat_Transport_01",
+	};
+	randomSeed=16091530;
+	class Intel
+	{
+		briefingName="[SP/MP]Dynamic Universal War System Modified";
+		overviewText="Play a full, randomly generated campaign on whatever island you want to.";
+		startWeather=0;
+		startWind=0;
+		forecastWeather=0;
+		forecastWind=0;
+		forecastWaves=0;
+		wavesForced=1;
+		windForced=1;
+		year=2035;
+		month=8;
+		day=6;
+		hour=0;
+		minute=0;
+		startFogBase=0.001;
+		forecastFogBase=0.001;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+	class Groups
+	{
+		items=12;
+		class Item0
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={41.243427,0,251.97107};
+					azimut=-104.97;
+					id=0;
+					side="EAST";
+					vehicle="O_Soldier_F";
+					leader=1;
+					skill=0.60000002;
+					init="removeallweapons this";
+				};
+			};
+		};
+		class Item1
+		{
+			side="CIV";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={35.804993,0,26.812012};
+					azimut=150.57401;
+					id=1;
+					side="CIV";
+					vehicle="C_man_1";
+					leader=1;
+					skill=0.60000002;
+					init="removeallweapons this";
+				};
+			};
+		};
+		class Item2
+		{
+			side="GUER";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={37.437637,0,154.00293};
+					id=2;
+					side="GUER";
+					vehicle="I_Soldier_exp_F";
+					leader=1;
+					skill=0.60000002;
+					init="removeallweapons this";
+				};
+			};
+		};
+		class Item3
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={117.6598,0.16756104,103.34326};
+					azimut=83.280197;
+					id=3;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item4
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={189.99005,0.22848341,1069.2971};
+					azimut=63.238899;
+					id=4;
+					side="WEST";
+					vehicle="B_soldier_AT_F";
+					player="PLAYER COMMANDER";
+					leader=1;
+					rank="SERGEANT";
+					skill=0.46666664;
+					text="player1";
+					description="Kaukassus - Logistics & AT";					
+				};
+			};
+		};
+		class Item5
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					presenceCondition="isMultiplayer";
+					position[]={505.24139,-0.2177071,1072.9504};
+					id=5;
+					side="WEST";
+					vehicle="B_soldier_AT_F";
+					player="PLAY CDG";
+					leader=1;
+					rank="SERGEANT";
+					skill=0.60000002;
+					text="player2";
+					description="H4b4sh - Sniper ond so";
+				};
+			};
+		};
+		class Item6
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					presenceCondition="isMultiplayer";
+					position[]={183.33578,-0.11955103,903.83972};
+					id=6;
+					side="WEST";
+					vehicle="B_soldier_repair_F";
+					player="PLAY CDG";
+					leader=1;
+					rank="SERGEANT";
+					skill=0.60000002;
+					text="player3";
+					description="Major Double - Medic ond en schlechte Panzer schuetze";
+				};
+			};
+		};
+		class Item7
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					presenceCondition="isMultiplayer";
+					position[]={503.75793,0.21242723,906.80603};
+					id=7;
+					side="WEST";
+					vehicle="B_soldier_repair_F";
+					player="PLAY CDG";
+					leader=1;
+					rank="SERGEANT";
+					skill=0.60000002;
+					text="player4";
+					description="Pegasus - Homo wo nor wott fluege";
+				};
+			};
+		};
+		class Item8
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					presenceCondition="isMultiplayer";
+					position[]={186.30258,0.05789116,779.23279};
+					id=8;
+					side="WEST";
+					vehicle="B_medic_F";
+					player="PLAY CDG";
+					leader=1;
+					rank="SERGEANT";
+					skill=0.60000002;
+					text="player5";
+					description="Kei ahnig - Kei ahnig";
+				};
+			};
+		};
+		class Item9
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					presenceCondition="isMultiplayer";
+					position[]={502.27435,-0.033683583,774.77966};
+					id=9;
+					side="WEST";
+					vehicle="B_medic_F";
+					player="PLAY CDG";
+					leader=1;
+					rank="SERGEANT";
+					skill=0.60000002;
+					text="player6";
+					description="Kei ahnig - Kei ahnig";
+				};
+			};
+		};
+		class Item10
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					presenceCondition="isMultiplayer";
+					position[]={178.88544,0.019906089,657.59033};
+					id=10;
+					side="WEST";
+					vehicle="B_soldier_AA_F";
+					player="PLAY CDG";
+					leader=1;
+					rank="SERGEANT";
+					skill=0.60000002;
+					text="player7";
+					description="Kei ahnig - Kei ahnig";
+				};
+			};
+		};
+		class Item11
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=5;
+				class Item0
+				{
+					presenceCondition="isMultiplayer";
+					position[]={491.89044,-0.0045730919,666.49109};
+					id=11;
+					side="WEST";
+					vehicle="B_soldier_AT_F";
+					player="PLAY CDG";
+					leader=1;
+					rank="SERGEANT";
+					skill=0.60000002;
+					text="player8";
+					description="MISSILE SPECIALIST (AT), GROUP LEADER OPEN JOIN";
+				};
+				class Item1
+				{
+					presenceCondition="isMultiplayer";
+					position[]={663.43341,0,537.24976};
+					id=12;
+					side="WEST";
+					vehicle="B_engineer_F";
+					player="PLAY CDG";
+					skill=0.60000002;
+					text="player9";
+					description="Engineer - select to join this group's leader (DO NOT RECRUIT AI IN-GAME)";
+				};
+				class Item2
+				{
+					presenceCondition="isMultiplayer";
+					position[]={809.79004,0,513.43872};
+					id=13;
+					side="WEST";
+					vehicle="B_medic_F";
+					player="PLAY CDG";
+					skill=0.60000002;
+					text="player10";
+					description="Medic - select to join this group's leader (DO NOT RECRUIT AI IN-GAME)";
+				};
+				class Item3
+				{
+					presenceCondition="isMultiplayer";
+					position[]={965.0769,0,475.30518};
+					id=14;
+					side="WEST";
+					vehicle="B_soldier_AA_F";
+					player="PLAY CDG";
+					skill=0.60000002;
+					text="player11";
+					description="AA Specialist - select to join this group's leader (DO NOT RECRUIT AI IN-GAME)";
+				};
+				class Item4
+				{
+					presenceCondition="isMultiplayer";
+					position[]={1128.0192,0,422.07642};
+					id=15;
+					side="WEST";
+					vehicle="B_recon_M_F";
+					player="PLAY CDG";
+					skill=0.60000002;
+					text="player12";
+					description="Marksman - select to join this group's leader (DO NOT RECRUIT AI IN-GAME)";
+				};
+			};
+		};
+	};
+	class Markers
+	{
+		items=1;
+		class Item0
+		{
+			position[]={91.06839,0.14840496,23.99707};
+			name="respawn_west";
+			type="Empty";
+		};
+	};
+};
+class Intro
+{
+	addOns[]=
+	{
+		"a3_map_stratis",
+		"a3_map_altis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_altis"
+	};
+	randomSeed=14680970;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=7;
+		day=6;
+		hour=14;
+		minute=15;
+		startFogBase=0.001;
+		forecastFogBase=0.001;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+};
+class OutroWin
+{
+	addOns[]=
+	{
+		"a3_map_stratis",
+		"a3_map_altis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_altis"
+	};
+	randomSeed=13195057;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=7;
+		day=6;
+		hour=14;
+		minute=15;
+		startFogBase=0.001;
+		forecastFogBase=0.001;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+};
+class OutroLoose
+{
+	addOns[]=
+	{
+		"a3_map_stratis",
+		"a3_map_altis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_altis"
+	};
+	randomSeed=16171346;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=7;
+		day=6;
+		hour=14;
+		minute=15;
+		startFogBase=0.001;
+		forecastFogBase=0.001;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+};
