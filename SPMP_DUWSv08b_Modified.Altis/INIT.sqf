@@ -69,8 +69,6 @@ zones_min_radius = 200; // Determine the minium radius a generated zone can have
 QRF_test = compile preprocessFile "WARCOM\WARCOM_opf_qrf.sqf";
 persistent_stat_script_init = [] execVM "persistent\persistent_stats_init.sqf";
 waitUntil {scriptDone persistent_stat_script_init};
-execvm "dynamic_music\dyn_music_init.sqf";
-
 
 	missions_success = 0; // nber of missions succes(!!dont touch!!)
 
