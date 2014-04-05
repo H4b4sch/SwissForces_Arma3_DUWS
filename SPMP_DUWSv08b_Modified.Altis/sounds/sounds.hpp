@@ -1,22 +1,6 @@
 class CfgSounds
 {
 	sounds[] = {};
-	class radiochatter2
-	{
-		// how the sound is referred to in the editor (e.g. trigger effects)
-		name = "radiochatter2";
-		// filename, volume, pitch
-		sound[] = {"sounds\radiochatter2.ogg", 1, 1};
-		titles[] = {};
-	};
-	class radiochatter4
-	{
-		// how the sound is referred to in the editor (e.g. trigger effects)
-		name = "radiochatter4";
-		// filename, volume, pitch
-		sound[] = {"sounds\radiochatter4.ogg", 1, 1};
-		titles[] = {};
-	};	
 	class loadgun
 	{
 		// how the sound is referred to in the editor (e.g. trigger effects)

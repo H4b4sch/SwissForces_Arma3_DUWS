@@ -48,7 +48,6 @@ _hq setdir 0;
 _handle = [hq_blu1] execVM "initHQ\HQaddactions.sqf";
 removeallweapons _hq;
 _hq switchMove "acts_StandingSpeakingUnarmed";
-_handle = [_hq] execVM "sounds\radiochatter.sqf";
 //_drawicon = [] execVM "inithq\drawIcon.sqf"; // create the icon
 
 //GUARDS
