@@ -19,7 +19,7 @@ BTC_l_placement_area = 20;
 if (BTC_active_lift == 1) then
 {
 	//Lift
-	BTC_lift_pilot    = ["B_soldier_AT_F","B_soldier_repair_F","B_medic_F","B_soldier_AA_F","B_engineer_F","B_recon_M_F"];
+	BTC_lift_pilot    = [];
 	BTC_lift          = 1;
 	BTC_lifted        = 0;
 	BTC_lift_min_h    = 2;
