@@ -365,7 +365,7 @@ if (isMultiplayer) then {
 
 // Logistic
 _logistic = execVM "=BTC=_Logistic\=BTC=_Logistic_Init.sqf";
-0 = execVM "IgiLoad\IgiLoadInit.sqf";
+0 = execVM "=BTC=_logistic\IgiLoad\IgiLoadInit.sqf";
 
 
 		// create mission victory script //SPAWN BEGIN
