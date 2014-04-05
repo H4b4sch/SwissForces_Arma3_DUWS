@@ -17,7 +17,6 @@ BTC_l_placement_area = 20;
 if (BTC_active_lift == 1) then
 {
 	//Lift
-	BTC_lift_pilot    = [];
 	BTC_lift          = 1;
 	BTC_lifted        = 0;
 	BTC_lift_min_h    = 2;

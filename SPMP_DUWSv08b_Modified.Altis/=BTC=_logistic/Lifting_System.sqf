@@ -8,14 +8,7 @@
 waitUntil {!isNull player};
 waitUntil {player == player};
 
-_cond = true;
-if ((count BTC_lift_pilot) > 0) then 
-{
-	if ((BTC_lift_pilot find (typeof player)) == - 1) exitWith {hint "No lift";_cond = false;};
-};
-if !(_cond) exitWith {hint "No lift";};
 BTC_cargo      = ObjNull;
-//Functions
 BTC_lift_check =
 {
 	private ["_rel_pos"];
@@ -34,11 +27,10 @@ BTC_lift_check =
 		_rel_pos   = _chopper worldToModel _cargo_pos;
 		BTC_cargo_x   = _rel_pos select 0;
 		BTC_cargo_y   = _rel_pos select 1;
-		BTC_cargo_z   = _rel_pos select 2;//hintSilent format ["%1 - %2 - %3",BTC_cargo_x,BTC_cargo_y,BTC_cargo_z];
+		BTC_cargo_z   = _rel_pos select 2;
 	};
 	if (((abs BTC_cargo_z) < BTC_lift_max_h) && ((abs BTC_cargo_z) > BTC_lift_min_h) && ((abs BTC_cargo_x) < BTC_lift_radius) && ((abs BTC_cargo_y) < BTC_lift_radius)) then
 	{_can_lift = true;} else {_can_lift = false;};
-	//hintSilent format ["%1 - %2", BTC_cargo,_cargo_array];
 	_can_lift
 };
 BTC_attach_cargo =
