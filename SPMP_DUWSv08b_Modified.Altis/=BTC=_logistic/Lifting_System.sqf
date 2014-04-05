@@ -1,9 +1,10 @@
-/*
-Created by =BTC= Giallustio
-
-Date: 20/03/2013
-Visit us at: http://www.blacktemplars.altervista.org/
-*/
+//====================================================================
+//Information  /
+//------------/
+// This is the Lifting Script which was taken from the BTC Logistics
+// Script. It's edited and optimised for personal use.
+//
+//====================================================================
 waitUntil {!isNull player};
 waitUntil {player == player};
 

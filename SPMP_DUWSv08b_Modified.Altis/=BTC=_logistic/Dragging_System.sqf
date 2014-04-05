@@ -55,7 +55,7 @@ BTC_l_drag =
 BTC_l_placement =
 {
 	private ["_plac","_veh","_array"];
-	_array = nearestObjects [player, BTC_def_placement, 5];
+	_array = nearestObjects [player, BTC_def_dragging, 5];
 	if (count _array > 0) then {_plac = _array select 0;};
 	if (isNull _plac) exitWith {};
 	if (format ["%1", _plac getVariable "BTC_cannot_place"] == "1") exitWith {hint "You can't place this object!";};
@@ -142,7 +142,7 @@ BTC_l_keydown =
 };
 
 _drag  = player addaction [("<t color=""#00FF00"">") + ("Drag") + "</t>",BTC_dir_action,[[],BTC_l_drag],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
-_plac  = player addaction [("<t color=""#00FF00"">") + ("Place") + "</t>",BTC_dir_action,[[],BTC_l_placement],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_placement, 5]) > 0"];
+_plac  = player addaction [("<t color=""#00FF00"">") + ("Place") + "</t>",BTC_dir_action,[[],BTC_l_placement],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
 _eh = player addEventHandler ["respawn", 
 {
 	_actions = [] spawn 
@@ -151,7 +151,7 @@ _eh = player addEventHandler ["respawn",
 		BTC_l_dragging     = false;
 		BTC_l_actions_cond = true;
 		_drag  = player addaction [("<t color=""#00FF00"">") + ("Drag") + "</t>",BTC_dir_action,[[],BTC_l_drag],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
-		_plac  = player addaction [("<t color=""#00FF00"">") + ("Place") + "</t>",BTC_dir_action,[[],BTC_l_placement],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_placement, 5]) > 0"];
+		_plac  = player addaction [("<t color=""#00FF00"">") + ("Place") + "</t>",BTC_dir_action,[[],BTC_l_placement],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
 	};
 }];
 

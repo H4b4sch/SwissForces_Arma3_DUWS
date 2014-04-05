@@ -11,8 +11,7 @@ if (isServer) then
 };
 if (isDedicated) exitwith {};
 BTC_active_lift      = 1;
-BTC_active_cargo     = 1;
-//Common
+BTC_active_dragging     = 1;
 BTC_dir_action = "=BTC=_logistic\=BTC=_addAction.sqf";
 BTC_l_placement_area = 20;
 if (BTC_active_lift == 1) then
@@ -23,12 +22,12 @@ if (BTC_active_lift == 1) then
 	BTC_lifted        = 0;
 	BTC_lift_min_h    = 2;
 	BTC_lift_max_h    = 35;
-	BTC_lift_radius   = 3;
+	BTC_lift_radius   = 4;
 	BTC_def_pip       = 1;
 	BTC_l_def_veh_pip = ["B_Heli_Light_01_F","O_Heli_Light_02_F","B_Heli_Transport_01_F","I_Heli_Transport_02_F"];
 	BTC_l_pip_cond    = false;
 	BTC_cargo_lifted  = objNull;
-	_lift = [] execVM "=BTC=_logistic\=BTC=_lift\=BTC=_lift_init.sqf";
+	_lift = [] execVM "=BTC=_logistic\Lifting_System.sqf";
 	BTC_get_liftable_array =
 	{
 		_chopper = _this select 0;
@@ -74,40 +73,11 @@ if (BTC_active_lift == 1) then
 		_array
 	};
 };
-if (BTC_active_fast_rope == 1) then
+if (BTC_active_dragging == 1) then
 {
-	//Fast roping
-	BTC_fast_rope_h = 35;
-	BTC_fast_rope_h_min = 5;
-	BTC_roping_chopper = ["B_Heli_Light_01_F","O_Heli_Light_02_F","B_Heli_Transport_01_F","I_Heli_Transport_02_F"];
-	_rope = [] execVM "=BTC=_logistic\=BTC=_fast_roping\=BTC=_fast_roping_init.sqf";
-};
-if (BTC_active_cargo == 1) then
-{
-	//Cargo System
 	_cargo = [] execVM "=BTC=_logistic\Dragging_System.sqf";
 	BTC_def_drag         = ["ReammoBox","ReammoBox_F","Strategic", "Wall_F", "HBarrier_base_F"];
-	BTC_def_placement    = ["ReammoBox","ReammoBox_F","Strategic", "Wall_F", "HBarrier_base_F"];
 	BTC_cargo_selected   = objNull;
-};
-//Functions
-BTC_l_paradrop =
-{
-	_veh          = _this select 0;
-	_dropped      = _this select 1;
-	_chute_type   = _this select 2;
-	private ["_chute"];
-	_dropped_type = typeOf _dropped;
-	if (typeOf _veh == "B_Heli_Light_01_F") then {_chute = createVehicle [_chute_type, [((position _veh) select 0) - 5,((position _veh) select 1) - 10,((position _veh) select 2)- 4], [], 0, "FLY"];} else {_chute = createVehicle [_chute_type, [((position _veh) select 0) - 5,((position _veh) select 1) - 3,((position _veh) select 2)- 4], [], 0, "FLY"];};
-	_smoke        = "SmokeshellGreen" createVehicle position _veh;
-	_chem         = "Chemlight_green" createVehicle position _veh;
-    _smoke attachto [_dropped,[0,0,0]];
-	_chem attachto [_dropped,[0,0,0]]; 
-	_dropped attachTo [_chute,[0,0,0]];
-	_heigh = 0;
-	while {((getPos _chute) select 2) > 0.3} do {sleep 1;_heigh = (getPos _chute) select 2;};
-	detach _dropped;
-	//if (_dropped_type isKindOf "ReammoBox") then {_dropped setPos [getpos _dropped select 0, getpos _dropped select 1, _heigh];};
 };
 BTC_l_obj_fall =
 {
@@ -116,12 +86,9 @@ BTC_l_obj_fall =
 	_fall   = 0.09;
 	while {((getPos _obj) select 2) > 0.1} do 
 	{
-
 		_fall = (_fall * 1.1);
 		_obj setPos [getPos _obj select 0, getPos _obj select 1, _height];
 		_height = _height - _fall;
-		//hint format ["%1 - %2", (getPos _obj) select 2,_height];
 		sleep 0.01;
 	};
-	//if (((getPos _obj) select 2) < 0.3) then {_obj setPos [getPos _obj select 0, getPos _obj select 1, 0.2];};
 };
