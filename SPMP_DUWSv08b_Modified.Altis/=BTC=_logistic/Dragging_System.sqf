@@ -1,13 +1,19 @@
-BTC_l_select =
-{
-	_array = nearestObjects [player, BTC_def_cargo, 5];
-	if (count _array > 0) then 
-	{
-		BTC_cargo_selected = _array select 0;
-		if (format ["%1", BTC_cargo_selected getVariable "BTC_cannot_load"] == "1") then 
-		{hint "You can not load this object";BTC_cargo_selected = objNull;} else {hint parseText format ["%1 selected<br/>CR: %2",getText (configFile >> "cfgVehicles" >> typeof BTC_cargo_selected >> "displayName"),[BTC_cargo_selected] call BTC_get_rc];};
-	};
-};
+//====================================================================
+//Information  /
+//------------/
+// This is a modified version of the Cargo Script of the BTC
+// Logistics script. The script was stripped down to dragging
+// objects only.
+//
+//
+//====================================================================
+
+waitUntil {!isNull player};
+waitUntil {player == player};
+
+BTC_l_dragging     = false;
+BTC_l_actions_cond = true;
+
 BTC_l_release =
 {
 	BTC_l_dragging = false;
@@ -37,13 +43,11 @@ BTC_l_drag =
 		sleep 0.1;
 	};
 	player playMoveNow "AmovPknlMstpSrasWrflDnon";BTC_l_dragging = false;
-	player removeAction _release;//player removeAction _load;
+	player removeAction _release;
 	(findDisplay 46) displayRemoveEventHandler ["KeyDown",BTC_display_EH_l];
 	if !(isNull _drag) then 
 	{
 		detach _drag;
-		//_rel_pos = player modelToWorld [0,1,0];
-		//BTC_cargo_selected setpos _rel_pos;
 		_drag setvariable ["BTC_Being_Drag",0,true];
 	};
 };
@@ -136,3 +140,18 @@ BTC_l_keydown =
 		};
 	};
 };
+
+_drag  = player addaction [("<t color=""#00FF00"">") + ("Drag") + "</t>",BTC_dir_action,[[],BTC_l_drag],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
+_plac  = player addaction [("<t color=""#00FF00"">") + ("Place") + "</t>",BTC_dir_action,[[],BTC_l_placement],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_placement, 5]) > 0"];
+_eh = player addEventHandler ["respawn", 
+{
+	_actions = [] spawn 
+	{
+		waitUntil {Alive player};
+		BTC_l_dragging     = false;
+		BTC_l_actions_cond = true;
+		_drag  = player addaction [("<t color=""#00FF00"">") + ("Drag") + "</t>",BTC_dir_action,[[],BTC_l_drag],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
+		_plac  = player addaction [("<t color=""#00FF00"">") + ("Place") + "</t>",BTC_dir_action,[[],BTC_l_placement],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_placement, 5]) > 0"];
+	};
+}];
+

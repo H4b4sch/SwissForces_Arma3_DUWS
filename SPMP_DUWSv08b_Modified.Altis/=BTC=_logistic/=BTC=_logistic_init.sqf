@@ -11,7 +11,6 @@ if (isServer) then
 };
 if (isDedicated) exitwith {};
 BTC_active_lift      = 1;
-BTC_active_fast_rope = 0;
 BTC_active_cargo     = 1;
 //Common
 BTC_dir_action = "=BTC=_logistic\=BTC=_addAction.sqf";
@@ -43,13 +42,13 @@ if (BTC_active_lift == 1) then
 			case "B_Heli_Light_01_armed_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Quadbike_01_base_F","Strategic", "StaticWeapon", "Car"];};
 
 			//AH-99 Blackfoot
-			case "B_Heli_Attack_01_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car"];};
+			case "B_Heli_Attack_01_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car", "Wall_F"];};
 
 			//PO-30
-			case "O_Heli_Light_02_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car"];};
+			case "O_Heli_Light_02_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car", "Wall_F", "HBarrier_base_F"];};
 
 			//PO-30 Orca (Black)
-			case "O_Heli_Light_02_unarmed_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car"];};
+			case "O_Heli_Light_02_unarmed_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car", "Wall_F", "HBarrier_base_F"];};
 
 			//Mi-48 Kajman
 			case "O_Heli_Attack_02_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car"];};
@@ -58,19 +57,19 @@ if (BTC_active_lift == 1) then
 			case "O_Heli_Attack_02_black_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car"];};
 
 			//UH-80 Ghost Hawk
-			case "B_Heli_Transport_01_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"];};
+			case "B_Heli_Transport_01_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship", "Wall_F", "HBarrier_base_F"];};
 
 			//UH-80 Ghost Hawk (Camo)
-			case "B_Heli_Transport_01_camo_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"];};
+			case "B_Heli_Transport_01_camo_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship", "Wall_F", "HBarrier_base_F"];};
 
 			//WY-55 Hellcat
-			case "I_Heli_light_03_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"];};
+			case "I_Heli_light_03_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship", "Wall_F", "HBarrier_base_F"];};
 
 			//WY-55 Hellcat (Green)
-			case "I_Heli_light_03_unarmed_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"];};
+			case "I_Heli_light_03_unarmed_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship", "Wall_F", "HBarrier_base_F"];};
 
 			//CH-49 Mohawk
-			case "I_Heli_Transport_02_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Tracked_APC","APC_Tracked_01_base_F","APC_Tracked_02_base_F","Air","Ship"];};
+			case "I_Heli_Transport_02_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Tracked_APC","APC_Tracked_01_base_F","APC_Tracked_02_base_F","Air","Ship", "Wall_F", "HBarrier_base_F"];};
 		};
 		_array
 	};
@@ -86,10 +85,9 @@ if (BTC_active_fast_rope == 1) then
 if (BTC_active_cargo == 1) then
 {
 	//Cargo System
-	_cargo = [] execVM "=BTC=_logistic\=BTC=_cargo_system\=BTC=_cargo_system_init.sqf";
-	BTC_def_cargo        = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic"];
-	BTC_def_drag         = ["ReammoBox","ReammoBox_F","Strategic"];
-	BTC_def_placement    = ["ReammoBox","ReammoBox_F","Strategic"];
+	_cargo = [] execVM "=BTC=_logistic\Dragging_System.sqf";
+	BTC_def_drag         = ["ReammoBox","ReammoBox_F","Strategic", "Wall_F", "HBarrier_base_F"];
+	BTC_def_placement    = ["ReammoBox","ReammoBox_F","Strategic", "Wall_F", "HBarrier_base_F"];
 	BTC_cargo_selected   = objNull;
 };
 //Functions
