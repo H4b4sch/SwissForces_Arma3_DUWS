@@ -89,8 +89,8 @@ class Mission
 	randomSeed=16091530;
 	class Intel
 	{
-		briefingName="[SP/MP]Dynamic Universal War System Modified";
-		overviewText="Play a full, randomly generated campaign on whatever island you want to.";
+		briefingName="[COOP] Swiss DUWS";
+		overviewText="Special Customised version of DUWS.";
 		startWeather=0;
 		startWind=0;
 		forecastWeather=0;
@@ -203,7 +203,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.46666664;
 					text="player1";
-					description="Kaukassus - Logistics & AT";					
+					description="Commander";					
 				};
 			};
 		};
@@ -225,7 +225,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.60000002;
 					text="player2";
-					description="H4b4sh - Sniper ond so";
+					description="Logistic Expert";
 				};
 			};
 		};
@@ -247,7 +247,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.60000002;
 					text="player3";
-					description="Major Double - Medic ond en schlechte Panzer schuetze";
+					description="Marksman";
 				};
 			};
 		};
@@ -269,7 +269,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.60000002;
 					text="player4";
-					description="Pegasus - Homo wo nor wott fluege";
+					description="Combat Medic";
 				};
 			};
 		};
@@ -291,7 +291,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.60000002;
 					text="player5";
-					description="Kei ahnig - Kei ahnig";
+					description="Pilot";
 				};
 			};
 		};
@@ -313,7 +313,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.60000002;
 					text="player6";
-					description="Kei ahnig - Kei ahnig";
+					description="AT / AA Ranger";
 				};
 			};
 		};
@@ -335,7 +335,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.60000002;
 					text="player7";
-					description="Kei ahnig - Kei ahnig";
+					description="AAD 10";
 				};
 			};
 		};
@@ -357,7 +357,7 @@ class Mission
 					rank="SERGEANT";
 					skill=0.60000002;
 					text="player8";
-					description="MISSILE SPECIALIST (AT), GROUP LEADER OPEN JOIN";
+					description="Other";
 				};
 				class Item1
 				{
@@ -369,7 +369,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="player9";
-					description="Engineer - select to join this group's leader (DO NOT RECRUIT AI IN-GAME)";
+					description="Other";
 				};
 				class Item2
 				{
@@ -381,7 +381,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="player10";
-					description="Medic - select to join this group's leader (DO NOT RECRUIT AI IN-GAME)";
+					description="Other";
 				};
 				class Item3
 				{
@@ -393,7 +393,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="player11";
-					description="AA Specialist - select to join this group's leader (DO NOT RECRUIT AI IN-GAME)";
+					description="Other";
 				};
 				class Item4
 				{
@@ -405,7 +405,7 @@ class Mission
 					player="PLAY CDG";
 					skill=0.60000002;
 					text="player12";
-					description="Marksman - select to join this group's leader (DO NOT RECRUIT AI IN-GAME)";
+					description="Other";
 				};
 			};
 		};
