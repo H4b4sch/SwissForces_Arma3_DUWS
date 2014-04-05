@@ -364,7 +364,7 @@ if (isMultiplayer) then {
 };
 
 // Logistic
-_logistic = execVM "=BTC=_Logistic\=BTC=_Logistic_Init.sqf";
+_logistic = execVM "=BTC=_Logistic\Logistic_Init.sqf";
 0 = execVM "=BTC=_logistic\IgiLoad\IgiLoadInit.sqf";
 
 

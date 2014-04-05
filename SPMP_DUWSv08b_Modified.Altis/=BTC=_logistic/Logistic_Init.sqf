@@ -12,7 +12,7 @@ if (isServer) then
 if (isDedicated) exitwith {};
 BTC_active_lift      = 1;
 BTC_active_dragging     = 1;
-BTC_dir_action = "=BTC=_logistic\=BTC=_addAction.sqf";
+BTC_dir_action = "=BTC=_logistic\Logistic_AddAction.sqf";
 BTC_l_placement_area = 20;
 if (BTC_active_lift == 1) then
 {
