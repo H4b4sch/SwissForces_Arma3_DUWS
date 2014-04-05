@@ -282,9 +282,6 @@ waitUntil {chosen_hq_placement};
 //////// DEBUG LOOP /////////////
 */
 
-// AMBIANCE LOOP
-//_nul = [] execVM "musicloop.sqf";
-
 if (isServer) then {
 // group cleaning script
 clean = [
