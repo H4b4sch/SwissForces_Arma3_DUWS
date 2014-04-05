@@ -22,17 +22,13 @@ if (BTC_active_lift == 1) then
 	BTC_lift_pilot    = ["B_soldier_AT_F","B_soldier_repair_F","B_medic_F","B_soldier_AA_F","B_engineer_F","B_recon_M_F"];
 	BTC_lift          = 1;
 	BTC_lifted        = 0;
-	BTC_lift_min_h    = 6;
-	BTC_lift_max_h    = 16;
+	BTC_lift_min_h    = 2;
+	BTC_lift_max_h    = 35;
 	BTC_lift_radius   = 3;
-	BTC_def_hud       = 1;
 	BTC_def_pip       = 1;
 	BTC_l_def_veh_pip = ["B_Heli_Light_01_F","O_Heli_Light_02_F","B_Heli_Transport_01_F","I_Heli_Transport_02_F"];
 	BTC_l_pip_cond    = false;
 	BTC_cargo_lifted  = objNull;
-	BTC_Hud_Cond      = false;
-	BTC_HUD_x         = (SafeZoneW+2*SafeZoneX) - 0.155;//+ 0.045;
-	BTC_HUD_y         = (SafeZoneH+2*SafeZoneY) + 0.045;
 	_lift = [] execVM "=BTC=_logistic\=BTC=_lift\=BTC=_lift_init.sqf";
 	BTC_get_liftable_array =
 	{
@@ -42,18 +38,18 @@ if (BTC_active_lift == 1) then
 		{
 			//MH-9 Hummingbird
  			case "B_Heli_Light_01_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Quadbike_01_base_F","Strategic", "StaticWeapon"];};
-			
+				
 			//AH-9 Pawnee
-  		case "B_Heli_Light_01_armed_F": {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Quadbike_01_base_F","Strategic", "StaticWeapon"];};
-			
+  			case "B_Heli_Light_01_armed_F": {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Quadbike_01_base_F","Strategic", "StaticWeapon"];};
+				
 			//AH-99 Blackfoot
-  		case "B_Heli_Attack_01_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car"];};
-  		
-  		//UH80
-  		case "B_Heli_Transport_01_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"];};
-
-  		//UH-80 Ghost Hawk (Camo)
-  		case "B_Heli_Transport_01_camo_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"];};
+  			case "B_Heli_Attack_01_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car"];};
+  			
+  			//UH-80 Ghost Hawk
+  			case "B_Heli_Transport_01_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"];};
+	
+  			//UH-80 Ghost Hawk (Camo)
+  			case "B_Heli_Transport_01_camo_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"];};
 		};
 		_array
 	};

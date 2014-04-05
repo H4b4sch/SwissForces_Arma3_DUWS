@@ -40,7 +40,6 @@ disabledAI = 1;
 #include "duws_revive\gui\duws_revive.hpp"
 // #include "ATM_airdrop\dialog.hpp"
 
-
 // VAS INIT BEGIN --  ALSO TAW VIEWDISTANCE
 #include "taw_vd\dialog.hpp"       
 #include "VAS\menu.hpp"
