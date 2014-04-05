@@ -24,8 +24,7 @@ BTC_l_drag =
 	_array = nearestObjects [player, BTC_def_drag, 5];
 	if (count _array > 0) then {_drag = _array select 0;};
 	if (isNull _drag) exitWith {};
-	if (format ["%1", _drag getVariable "BTC_cannot_drag"] == "1") exitWith {hint "You can't drag this object!";};
-	if (_drag distance player > 4) exitWith {hint "Too distance from the object!";};
+	if (_drag distance player > 4) exitWith {hint "Too far away from the object!";};
 	if (BTC_l_dragging) exitWith {hint "You can't drag more than one object!";};
 	if (format ["%1", _drag getVariable "BTC_being_drag"] == "1") exitWith {hint "You can't drag this object! it's being dragged!";};
 	BTC_l_dragging = true;
@@ -58,7 +57,6 @@ BTC_l_placement =
 	_array = nearestObjects [player, BTC_def_dragging, 5];
 	if (count _array > 0) then {_plac = _array select 0;};
 	if (isNull _plac) exitWith {};
-	if (format ["%1", _plac getVariable "BTC_cannot_place"] == "1") exitWith {hint "You can't place this object!";};
 	BTC_l_plac_obj = _plac;
 	BTC_l_camera = objNull;
 	BTC_l_end = false;
