@@ -34,7 +34,7 @@ BTC_l_drag =
 	_drag attachto [player,[0,2,0.2]];
 	sleep 0.1;
 	if ((position _drag select 2) < - 0.5) then {_drag attachto [player,[0,1,1.2]];};
-	_release = player addaction [("<t color=""#00FF00"">") + ("Release") + "</t>",BTC_dir_action,[[],BTC_l_release],7,true,false,"","true"];
+	_release = player addaction [("<t color='#00FF00'> Release </t>",BTC_dir_action,[[],BTC_l_release],7,true,false,"","true"];
 	WaitUntil {!Alive player || ((animationstate player == "acinpknlmstpsraswrfldnon") || (animationstate player == "acinpknlmwlksraswrfldb"))};
 	_act  = 0;
 	While {BTC_l_dragging && vehicle player == player && Alive player && ((animationstate player == "acinpknlmstpsraswrfldnon") || (animationstate player == "acinpknlmwlksraswrfldb"))} do
@@ -148,7 +148,7 @@ _eh = player addEventHandler ["respawn",
 		waitUntil {Alive player};
 		BTC_l_dragging     = false;
 		BTC_l_actions_cond = true;
-		_drag  = player addaction ["<t color='#00FF00'>Drag </t>",BTC_dir_action,[[],BTC_l_drag],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
-		_plac  = player addaction ["<t color='#00FF00'>Place </t>",BTC_dir_action,[[],BTC_l_placement],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
+		_drag  = player addaction ["<t color='#00FF00'> Drag </t>",BTC_dir_action,[[],BTC_l_drag],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
+		_plac  = player addaction ["<t color='#00FF00'> Place </t>",BTC_dir_action,[[],BTC_l_placement],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
 	};
 }];
