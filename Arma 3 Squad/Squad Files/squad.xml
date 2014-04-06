@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE squad SYSTEM "squad.dtd">
+<?xml-stylesheet href="squad.xsl?" type="text/xsl"?>
+
+<squad nick="CH">
+<name>Swiss Arma</name>
+<email>N/A</email>
+<web>http://burgherr.me/</web>
+<picture>logo-round-transparent.paa</picture>
+<title>Schweizer Arma 3 Gruppe</title>	
+
+<member id="76561197990522336" nick="Kaukassus">
+<name>Kaukassus</name>
+<email>N/A</email>
+<icq>N/A</icq>
+<remark>Logistik Experte und Swagger</remark>
+</member>
+
+<member id="76561198052636576" nick="major_max_payne">
+<name>major_max_payne</name>
+<email>N/A</email>
+<icq>N/A</icq>
+<remark>Supersniper</remark>
+</member>
+
+<member id="76561197961611684" nick="MaJoR_DoUbLe">
+<name>MaJoR_DoUbLe</name>
+<email>N/A</email>
+<icq>N/A</icq>
+<remark>Medic</remark>
+</member>
+</squad>
