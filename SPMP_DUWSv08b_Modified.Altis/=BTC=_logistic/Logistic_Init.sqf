@@ -75,7 +75,7 @@ if (BTC_active_lift == 1) then
 if (BTC_active_dragging == 1) then
 {
 	_cargo = [] execVM "=BTC=_logistic\Dragging_System.sqf";
-	BTC_def_drag         = ["ReammoBox","ReammoBox_F","Strategic", "Wall_F", "HBarrier_base_F"];
+	BTC_def_drag         = ["ReammoBox","ReammoBox_F","Strategic", "Wall_F", "HBarrier_base_F", "StaticWeapon"];
 	BTC_cargo_selected   = objNull;
 };
 BTC_l_obj_fall =

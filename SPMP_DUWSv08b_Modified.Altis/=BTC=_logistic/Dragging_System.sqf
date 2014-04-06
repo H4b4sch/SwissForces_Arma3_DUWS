@@ -54,7 +54,7 @@ BTC_l_drag =
 BTC_l_placement =
 {
 	private ["_plac","_veh","_array"];
-	_array = nearestObjects [player, BTC_def_dragging, 5];
+	_array = nearestObjects [player, BTC_def_drag, 5];
 	if (count _array > 0) then {_plac = _array select 0;};
 	if (isNull _plac) exitWith {};
 	BTC_l_plac_obj = _plac;
