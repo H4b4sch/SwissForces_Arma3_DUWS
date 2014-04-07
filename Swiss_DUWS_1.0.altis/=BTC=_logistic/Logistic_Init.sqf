@@ -55,19 +55,19 @@ if (BTC_active_lift == 1) then
 			case "O_Heli_Attack_02_black_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car"];};
 
 			//UH-80 Ghost Hawk
-			case "B_Heli_Transport_01_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship", "Wall_F", "HBarrier_base_F"];};
+			case "B_Heli_Transport_01_F" : {_array = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","AllVehicles","Air","Ship", "Wall_F", "HBarrier_base_F"];};;
 
 			//UH-80 Ghost Hawk (Camo)
-			case "B_Heli_Transport_01_camo_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship", "Wall_F", "HBarrier_base_F"];};
+			case "B_Heli_Transport_01_camo_F" : {_array = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","AllVehicles","Air","Ship", "Wall_F", "HBarrier_base_F"];};};
 
 			//WY-55 Hellcat
-			case "I_Heli_light_03_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship", "Wall_F", "HBarrier_base_F"];};
+			case "I_Heli_light_03_F" : {_array = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","AllVehicles","Air","Ship", "Wall_F", "HBarrier_base_F"];};
 
 			//WY-55 Hellcat (Green)
-			case "I_Heli_light_03_unarmed_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship", "Wall_F", "HBarrier_base_F"];};
+			case "I_Heli_light_03_unarmed_F" : {_array = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","AllVehicles","Air","Ship", "Wall_F", "HBarrier_base_F"];};
 
 			//CH-49 Mohawk
-			case "I_Heli_Transport_02_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Tracked_APC","APC_Tracked_01_base_F","APC_Tracked_02_base_F","Air","Ship", "Wall_F", "HBarrier_base_F"];};
+			case "I_Heli_Transport_02_F" : {_array = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","AllVehicles","Air","Ship", "Wall_F", "HBarrier_base_F"];};
 		};
 		_array
 	};
