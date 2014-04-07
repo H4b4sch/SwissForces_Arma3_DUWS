@@ -80,7 +80,22 @@ _art = [player,"helo_taxi"] call BIS_fnc_addCommMenuItem;
 }; 
 // ****************************************************
 
+// spawn smokeshell
+_smokePos = [_foundpickuppos select 0, (_foundpickuppos select 1)+ random 5];
+_smoke = "SmokeShellGreen" createVehicle _smokePos;
+_chemlight = "Chemlight_green" createVehicle _smokePos;
+
 _helo land "GET IN";
+
+// spawn the door opening script
+_pickupSpawnopen = [_helo,_foundpickuppos] spawn {
+_helo = _this select 0;
+_lzPos = _this select 1;
+waitUntil {getpos _helo distance _lzPos < 10};
+_helo animateDoor ['door_R', 1];
+sleep 3;
+_helo animateDoor ['door_L', 1];
+};
 
 _inVehCheck = true;
 while {_inVehCheck} do {
@@ -113,6 +128,16 @@ _helipad = createVehicle ["Land_HelipadEmpty_F", ClickedTaxiPos, [], 0, "NONE"];
 _wp = _helogroup addWaypoint [ClickedTaxiPos,0];
 _wp setWaypointType "MOVE";
 [_helogroup, 1] setWaypointCombatMode "BLUE";
+
+// spawn the door closing script
+_pickupSpawnclose = [_helo,_foundpickuppos] spawn {
+_helo = _this select 0;
+_lzPos = _this select 1;
+waitUntil {getpos _helo distance _lzPos > 10};
+_helo animateDoor ['door_R', 0];
+sleep 3;
+_helo animateDoor ['door_L', 0];
+};
 
 waitUntil {sleep 0.5;_helo distance _helipad1 > 350  or (getdammage _helo > 0.7 or !alive _pilot)}; // wait until the helo is away from LZ
 // IF THE PILOT IS DEAD OR CHOPPA DOWN  **************
@@ -152,6 +177,16 @@ _art = [player,"helo_taxi"] call BIS_fnc_addCommMenuItem;
 // *****************************
 _helo land "GET OUT";
 
+// spawn the door opening script
+_LzSpawnopen = [_helo] spawn {
+_helo = _this select 0;
+waitUntil {getpos _helo distance ClickedTaxiPos < 20};
+_helo animateDoor ['door_R', 1];
+sleep 3;
+_helo animateDoor ['door_L', 1];
+};
+
+
 
 // time to move ppl out of the helo;
 waitUntil {(getpos _helo select 2 < 4 && _helo distance _helipad<20)  or (getdammage _helo > 0.7 or !alive _pilot)}; // wait until the helo is near the ground
@@ -174,6 +209,15 @@ _wp = _helogroup addWaypoint [[0,0,0],0];   // tell the helo to leave
 _wp setWaypointType "MOVE";
 deleteMarker str(_markerpickup);
 deleteVehicle _helipad;
+
+// spawn the door closing script
+_LzSpawnclose = [_helo] spawn {
+_helo = _this select 0;
+sleep 2;
+_helo animateDoor ['door_R', 0];
+sleep 3;
+_helo animateDoor ['door_L', 0];
+};
 
 waitUntil {_helo distance player>100 or (getdammage _helo > 0.7 or !alive _pilot)}; // wait until the helo is near the ground
 // IF THE PILOT IS DEAD OR CHOPPA DOWN  **************

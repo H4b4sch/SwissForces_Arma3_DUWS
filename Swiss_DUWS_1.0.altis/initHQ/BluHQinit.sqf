@@ -56,17 +56,17 @@ _handle = [getpos hq_blu1] execVM "initHQ\guards.sqf";
 //STATIC DEFENSES
 _handle = [getpos hq_blu1] execVM "initHQ\fortify.sqf";
 
-//_hq addeventhandler ["hit", {_this call protect_officer}]; hint "hit";
-
 
 // IF THE OFFICER IS DEAD -- BEGIN OF "SPAWN"
 [_hq] spawn {
   _hq = _this select 0;
   waitUntil {sleep 1;!alive _hq};
   _hq switchMove "AidlPercMstpSnonWnonDnon01";
-  ["TaskFailed",["","Your commanding officer has been killed"]] call bis_fnc_showNotification;
+//  ["TaskFailed",["","Your commanding officer has been killed"]] call bis_fnc_showNotification;
+	[["TaskFailed",["","Your commanding officer has been killed"]],"bis_fnc_showNotification"] call BIS_fnc_MP; //new
   sleep 6;
-  ["officerkilled",false,true] call BIS_fnc_endMission;
+//  ["officerkilled",false,true] call BIS_fnc_endMission;
+	[["officerkilled",false,true],"BIS_fnc_endMission"] call BIS_fnc_MP;   //new
   };
 // IF THE OFFICER IS DEAD -- End OF "SPAWN"
 

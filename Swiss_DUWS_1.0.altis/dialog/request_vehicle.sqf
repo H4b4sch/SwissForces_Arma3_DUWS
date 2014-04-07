@@ -301,21 +301,51 @@ case 18:
           {
           hint "Not enough command points";
           };
+    };
 case 19:  
     {
-          if (commandpointsblu1 >= 30) then 
+          if (commandpointsblu1 >= 55) then 
           {
            hint "Vehicle ready !";
-           commandpointsblu1 = commandpointsblu1 - 30;
+           commandpointsblu1 = commandpointsblu1 - 55;
            ctrlSetText [1000, format["%1",commandpointsblu1]];
-           _vehic = "B_Truck_01_Repair_F" createVehicle _spawnPos;
+           _vehic = "B_MBT_01_TUSK_F" createVehicle _spawnPos;
           } 
           else 
           {
           hint "Not enough command points";
-          };
+          };  
     };
-  };	
+
+case 20:  
+    {
+          if (commandpointsblu1 >= 20) then 
+          {
+           hint "Vehicle ready !";
+           commandpointsblu1 = commandpointsblu1 - 20;
+           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           _vehic = "B_UGV_01_rcws_F" createVehicle _spawnPos; createVehicleCrew _vehic; 
+          } 
+          else 
+          {
+          hint "Not enough command points";
+          };  
+    };	
+	
+case 21:  
+    {
+          if (commandpointsblu1 >= 10) then 
+          {
+           hint "Vehicle ready !";
+           commandpointsblu1 = commandpointsblu1 - 10;
+           ctrlSetText [1000, format["%1",commandpointsblu1]];
+           _vehic = "B_UGV_01_F" createVehicle _spawnPos; createVehicleCrew _vehic; 
+          } 
+          else 
+          {
+          hint "Not enough command points";
+          };  
+    };	
    
 };
 publicVariable "commandpointsblu1";

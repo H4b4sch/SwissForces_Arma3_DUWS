@@ -32,6 +32,7 @@ diag_log format ["------------------ DUWS START ----v08b Modified by BigShot----
 		dynamic_weather_enable = true;
 		Attack = false;
 		PlayerMrkrs = true;
+		zoneFound = false;
 		
 		if (isNil "enable_fast_travel") then
 	{
@@ -149,6 +150,10 @@ waitUntil {scriptDone persistent_stat_script_init};
 	if (isNil "Array_of_FOBname") then
 	{
 	Array_of_FOBname = [];
+	};
+	if (isNil "WARCOM_zones_controled_by_BLUFOR") then
+	{
+	WARCOM_zones_controled_by_BLUFOR = [];publicVariable "WARCOM_zones_controled_by_BLUFOR";
 	};
 
 	
@@ -331,16 +336,16 @@ execVM "dialog\operative\operator_init.sqf";
 
 // Create help for DUWS
 _index = player createDiarySubject ["help","DUWS Manual"]; 
-player createDiaryRecord ["help", ["Feedback/bug report", "Please report any bug you see REGARDING THE MISSION by contacting me (kibot) on the BIS forums, on Armaholic or you can post a message under the ""discussion"" tab of the Steam Workshop. You can also directly go to the appropriate topic on the BIS forums. <br />Please keep in mind that this mission is still in development. Suggestions/feedbacks are welcome."]];
-player createDiaryRecord ["help", ["Export to another island", "<font color='#FF0000'>How to export to another island:</font color><br />You just need to take the .pbo file and rename it with the name of the island you want to export the mission to. You don't have anything else to do<br /><br />Example:<br />SP_DUWS.stratis.pbo >>> SP_DUWS.chernarus.pbo"]];
+player createDiaryRecord ["help", ["Feedback/bug report", "Please report any bug you see REGARDING THE MISSION by contacting me (BigShot) on the BIS forums, or on the Steam Workshop page for DUWS Modified.<br />Please keep in mind that this mission is still in development. Suggestions/feedbacks are welcome."]];
+player createDiaryRecord ["help", ["Export to another island", "<font color='#FF0000'>How to export to another island:</font color><br />You just need to take the .pbo file and rename it, replacing the name of the current island to the name of the island you want to export the mission to. You don't have anything else to do<br /><br />Example:<br />SP_DUWS.stratis.pbo >>> SP_DUWS.chernarus.pbo"]];
 player createDiaryRecord ["help", ["Credits", "Original Version by Kibot. Modified Version by BigShot. VAS script and TAW view distance by Tonic. ATM Airdrop HALO script by PokerTour. Thanks to Kempco for the mapsize script. Thanks to FrankHH for correcting the typos. Thanks to FunkDooBiesT for his help and his time.<br />Thanks to WolfFlight[TZW] and Amarak[TZW] for their help.<br />repetitive cleanup, SET/GET loadout and Player Marker scripts by aeroson.<br />Thanks to timsk."]];
 player createDiaryRecord ["help", ["Command Points (CP)", "Command points are used to purchase vehicles, units and ask for support (like artillery or save the game outside the base). To obtain Command points, you must capture the enemy controlled zones (red zones on the map) or execute side missions. You also receive 3 command points for each zone you have under your control every 30 minutes."]];
 player createDiaryRecord ["help", ["Army Power (AP)", "Army power represent the strenght of the BLUFOR forces present on the island. By capturing enemy positions and accomplishing side missions, you will add Army Power to your army. The attack waves of the BLUFOR army will become stronger."]];
 player createDiaryRecord ["help", ["Experience", "By accomplishing side missions, capturing zones and islands, you will increase your experience. With experience, you will automatically unlock new abilties. Once you have an ability, a description of this ability will be available in the 'ability' tab in the briefing.<br />Capturing an island gives you <font color='#FF0000'>5 XP</font color><br />Achieving a side mission: <font color='#FF0000'>2 XP</font color><br />Capturing a zone: <font color='#FF0000'>1 XP</font color>"]];
-player createDiaryRecord ["help", ["Saving the game", "You can save the game by resting at the base. Just go near the officer and select the action ""Rest"". Note that 6 hours will ellapse during that time. You can also save at any time by giving a SITREP in the support menu (0-8-1). Giving a SITREP does not make you wait, but it will cost you 1 CP for each save."]];
+player createDiaryRecord ["help", ["Saving the game", "You can save the game either by using SITREP in your Comms Menu(keystrokes 0-8-1) or resting at the base. Just go near the officer and select the action ""Rest"". Note that 6 hours will ellapse during that time. You can also save at any time by giving a SITREP in the support menu (0-8-1). Giving a SITREP does not make you wait, but it will cost you 1 CP for each save."]];
 player createDiaryRecord ["help", ["Repairing/Rearming", "To repair, refuel or rearm a vehicle you need to unlock the ""vehicle refit"" support. Once you have it, you can call the support and your vehicle will be rearmed, repaired and refueled. Note that you must be close to the base to be able to use the vehicle refit."]];
 player createDiaryRecord ["help", ["Support", "During the campaign you may unlock several support options at you HQ. You can access the available support in the radio menu (0-8). Note that calling for support cost CP."]];
-player createDiaryRecord ["help", ["Making a FOB", "After you have captured your first zone, you'll get the ability to establish a FOB for 10 CP. A FOB allows you to rest(save) at remote locations outside the base. Establishing a FOB will also spawn some BLUFOR patrols around it and if there are enemies around it, you will be notified. To establish a FOB, you must make sure the zone around you is clear in a radius of 500 meters. Just go to the support menu and select 'Establish FOB'. A FOB will be deployed to your location."]];
+player createDiaryRecord ["help", ["Making a FOB", "After you have captured your first zone, you'll get the ability to establish a FOB for 10 CP. A FOB allows you to rest(save) at remote locations outside the base. Establishing a FOB will also spawn some BLUFOR patrols around it and if there are enemies around it, you will be notified. To establish a FOB, you must be within 250 meters of a friendly green zone's CENTER and also make sure the zone around you is mostly clear of enemy in a radius of 500 meters. Just go to the support menu and select 'Establish FOB'. An FOB will be deployed to your location."]];
 player createDiaryRecord ["help", ["Side Missions", "You can request a side mission at the officer in the base. Successful side missions will not give any army power to the enemy, but will give you CP and increase your army power."]];
 player createDiaryRecord ["help", ["Requesting units", "To request units, go to the officer at the base and select the action ""Request units""."]];
 player createDiaryRecord ["help", ["Taking the Island", "At the beginning of the game, you are alone with your officer and only a few command points available, but as the war escalates, the BLUFOR HQ will start to launch attacks on enemy zone and will try to retake the island. You can help the main forces by assisting them in capturing the island, or you can also achieve side missions to boost the available assets of your army. It's up to you on how you want to play this campaign."]];

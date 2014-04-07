@@ -1,5 +1,16 @@
 _position = _this select 0;
 _size = _this select 1;
+zoneFound = false;
+
+{
+if (player distance _x < 250) exitWith {zoneFound = true};
+} forEach WARCOM_zones_controled_by_BLUFOR;
+
+if (!zoneFound) exitWith {
+	["Info",["NO FOB ALLOWED HERE","You Must Be Within 250m of a Green Zone's Center"]] call bis_fnc_showNotification;
+	sleep 15;
+  _art = [player,"fob_support"] call BIS_fnc_addCommMenuItem;
+};
 
 if (commandpointsblu1 < 10) exitWith {
   ["info",["Not enough command points","Not enough Command Points (10CP required)"]] call bis_fnc_showNotification;
@@ -100,6 +111,9 @@ _trgWarning setTriggerArea[300,300,0,false];
 _trgWarning setTriggerActivation["EAST","PRESENT",true];
 _trgWarning setTriggerStatements["this",format["PAPABEAR sidechat 'This is HQ, enemies have been reported around FOB %1'",_fobname], ""];
 
+
+
+
 //ADD THE FOB TO Array_of_FOBS
 fobSwitch = true; // tell that this is the player who created the FOB (to avoid variableEventHandler to trigger)
 Array_of_FOBS = Array_of_FOBS + [_fob];
@@ -118,5 +132,6 @@ sleep 1;
 
 sleep 300;
 _art = [player,"fob_support"] call BIS_fnc_addCommMenuItem;
+
 
 // Land_Cargo_HQ_V1_F

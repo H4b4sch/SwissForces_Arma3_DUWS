@@ -59,8 +59,10 @@
 	_index1 = lbAdd [2102, "MLRS Artillary (100CP)"];      		      // 15
 	_index1 = lbAdd [2102, "Scorcher Artillary (100CP)"];      		      // 16
 	_index1 = lbAdd [2102, "Fuel Truck (10CP)"];      		      // 17
-	_index1 = lbAdd [2102, "BUY ONLY AT AIRPORTS A-164 CAS(75CP)"];      		      // 18
- // _index1 = lbAdd [2102, "Repair Truck (30CP)"]; //19
+	_index1 = lbAdd [2102, "BUY ONLY AT AIRPORTS A-164 CAS(75CP)"];     // 18
+	_index1 = lbAdd [2102, "M2A4 SlammerUP(55CP)"];    // 19
+	_index1 = lbAdd [2102, "Stomper RCWS Autonomous(20CP)"];    // 20
+	_index1 = lbAdd [2102, "Stomper Autonomous Recon(10CP)"];    // 21
 	
   lbSetCurSel [2102, 0];
     

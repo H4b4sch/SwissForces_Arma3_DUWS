@@ -23,7 +23,8 @@
   _index1 = lbAdd [2122, "ATV(Free)"];                       // 5
   _index1 = lbAdd [2122, "SF SUV(2CP)"];      		      // 6
 	_index1 = lbAdd [2122, "Fuel Truck(10CP)"];      		      // 7
-	
+	_index1 = lbAdd [2122, "Stomper Autonomous Recon(10CP)"];    // 8
+
   lbSetCurSel [2122, 0];
     
         
