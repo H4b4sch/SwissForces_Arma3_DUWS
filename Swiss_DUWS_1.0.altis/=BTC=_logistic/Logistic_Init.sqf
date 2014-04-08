@@ -31,43 +31,25 @@ if (BTC_active_lift == 1) then
 	{
 		_chopper = _this select 0;
 		_array   = [];
+		store_strategic = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Wall_F","HBarrier_base_F"];
+		store_light 	= ["Quadbike_01_base_F","Ship"];
+		store_medium	= ["Car","Truck","Air"];
+		store_large		= ["AllVehicles"];
+
 		switch (typeOf _chopper) do
 		{
-  			//MH-9 Hummingbird
-			case "B_Heli_Light_01_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Quadbike_01_base_F","Strategic", "StaticWeapon", "Car"];};
-
-			//AH-9 Pawnee
-			case "B_Heli_Light_01_armed_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Quadbike_01_base_F","Strategic", "StaticWeapon", "Car"];};
-
-			//AH-99 Blackfoot
-			case "B_Heli_Attack_01_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car", "Wall_F"];};
-
-			//PO-30
-			case "O_Heli_Light_02_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car", "Wall_F", "HBarrier_base_F"];};
-
-			//PO-30 Orca (Black)
-			case "O_Heli_Light_02_unarmed_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car", "Wall_F", "HBarrier_base_F"];};
-
-			//Mi-48 Kajman
-			case "O_Heli_Attack_02_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car"];};
-
-			//Mi-48 Kajman (Black)
-			case "O_Heli_Attack_02_black_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car"];};
-
-			//UH-80 Ghost Hawk
-			case "B_Heli_Transport_01_F" : {_array = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","AllVehicles","Air","Ship", "Wall_F", "HBarrier_base_F"];};;
-
-			//UH-80 Ghost Hawk (Camo)
-			case "B_Heli_Transport_01_camo_F" : {_array = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","AllVehicles","Air","Ship", "Wall_F", "HBarrier_base_F"];};};
-
-			//WY-55 Hellcat
-			case "I_Heli_light_03_F" : {_array = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","AllVehicles","Air","Ship", "Wall_F", "HBarrier_base_F"];};
-
-			//WY-55 Hellcat (Green)
-			case "I_Heli_light_03_unarmed_F" : {_array = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","AllVehicles","Air","Ship", "Wall_F", "HBarrier_base_F"];};
-
-			//CH-49 Mohawk
-			case "I_Heli_Transport_02_F" : {_array = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","AllVehicles","Air","Ship", "Wall_F", "HBarrier_base_F"];};
+			case "B_Heli_Light_01_F"     		: {_array = store_strategic + store_light}; 				//MH-9 Hummingbird
+			case "B_Heli_Light_01_armed_F"  	: {_array = store_strategic + store_light}; 				//AH-9 Pawnee
+			case "B_Heli_Attack_01_F"			: {_array = store_strategic + store_light}; 				//AH-99 Blackfoot
+			case "B_Heli_Transport_01_F" 		: {_array = store_strategic + store_large}; 				//UH-80 Ghost Hawk
+			case "B_Heli_Transport_01_camo_F" 	: {_array = store_strategic + store_large}; 				//UH-80 Ghost Hawk (Camo)
+			case "O_Heli_Light_02_F" 			: {_array = store_strategic + store_light + store_medium}; //PO-30
+			case "O_Heli_Light_02_unarmed_F"	: {_array = store_strategic + store_light + store_medium}; //PO-30 Orca (Black)
+			case "O_Heli_Attack_02_F"     		: {_array = store_strategic + store_light}; 				//Mi-48 Kajman
+			case "O_Heli_Attack_02_black_F"     : {_array = store_strategic + store_light}; 				//Mi-48 Kajman (Black)
+			case "I_Heli_light_03_F" 			: {_array = store_strategic + store_light + store_medium}; //WY-55 Hellcat
+			case "I_Heli_light_03_unarmed_F" 	: {_array = store_strategic + store_light + store_medium}; //WY-55 Hellcat (Green)
+			case "I_Heli_Transport_02_F" 		: {_array = store_strategic + store_large}; 				//CH-49 Mohawk
 		};
 		_array
 	};
