@@ -193,7 +193,6 @@ if (isMultiplayer) then {
 	if (support_halo_available) then {_x addaction ["<t color='#15ff00'>HALO (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);	
 	
 	
-	if (_revive_activated == 1) then {execVM "duws_revive\reviveInit.sqf"};
 	if (_revive_activated == 0) then {vas_onRespawn = true};
 	if (AttackHeli == 0) then {Attack = false};
 	if (AttackHeli == 1) then {Attack = true};
@@ -439,6 +438,11 @@ for[{_x = 2},{_x <= 20},{_x = _x + 1}] do
 };
 
 trk = ["player"] execVM 'player_markers.sqf';
+
+// Call revive after other initialisation
+// because fuck you
+// also the respawn pos wouldnt be set correctly
+call compile preprocessFile "=BTC=_revive\=BTC=_revive_init.sqf";
 
 
 [] call compile preprocessfilelinenumbers "cp_ehkilled.sqf";

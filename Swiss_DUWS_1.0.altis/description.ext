@@ -14,11 +14,9 @@ class Header
  minPlayers = 1;             //min # of players the mission supports
  maxPlayers = 12;            //Max # of players the mission supports
 };
-
-respawn = 3;
-respawnDelay = 16;
 disabledAI = 1;
 
+// Misc gui includes
 #include "debriefing.hpp"
 #include "dialog\defines.hpp"
 #include "dialog\startup\startup.hpp"
@@ -40,7 +38,12 @@ disabledAI = 1;
 #include "duws_revive\gui\duws_revive.hpp"
 // #include "ATM_airdrop\dialog.hpp"
 
-// VAS INIT BEGIN --  ALSO TAW VIEWDISTANCE
+// BTC revive
+Respawn = 3;
+RespawnDelay = 4;
+#include "=BTC=_revive\=BTC=_respawn.h"
+
+// VAS and Taw-ViewDistance
 #include "taw_vd\dialog.hpp"       
 #include "VAS\menu.hpp"
 class CfgFunctions
@@ -48,5 +51,3 @@ class CfgFunctions
 	#include "VAS\cfgfunctions.hpp"
 	#include "taw_vd\CfgFunctions.hpp"
 };
-
-// VAS INIT END --
