@@ -130,7 +130,7 @@
   // MAX DISTANCE FROM HQ
   index_max_dist_hq_20 = lbAdd [2188, "2.0 km - for smallest maps"];
   index_max_dist_hq_25 = lbAdd [2188, "2.5 km"];
-  index_max_dist_hq_25 = lbAdd [2188, "3.0 km"];
+  index_max_dist_hq_30 = lbAdd [2188, "3.0 km"];
   index_max_dist_hq_40 = lbAdd [2188, "4.0 km"];
   index_max_dist_hq_50 = lbAdd [2188, "5.0 km (default)"];   
   index_max_dist_hq_75 = lbAdd [2188, "7.5 km"]; 
