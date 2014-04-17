@@ -861,6 +861,12 @@ BTC_vehicle_mobile_respawn =
 	_resp = [_veh,_var,_set] spawn BTC_vehicle_mobile_respawn;
 	_veh setpos _pos;
 };
+BTC_vehicle_mobile_delete =
+{
+	_veh  = _this select 0;
+	waitUntil {sleep 1; Alive _veh};
+	deleteVehicle _veh;
+};
 BTC_out_of_lifes =
 {
 	if (BTC_lifes == 0) then
