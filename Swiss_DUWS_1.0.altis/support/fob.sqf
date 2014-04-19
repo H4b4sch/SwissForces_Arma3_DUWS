@@ -1,6 +1,12 @@
 _position = _this select 0;
 _size = _this select 1;
 
+if (commandpointsblu1 < 10) exitWith {
+  ["info",["Not enough command points","Not enough Command Points (10CP required)"]] call bis_fnc_showNotification;
+  sleep 15;
+  _art = [player,"fob_support"] call BIS_fnc_addCommMenuItem;
+};
+
 // REGARDE SI LA ZONE EST OK
 Hint "Requesting a FOB...";
 player sidechat "Requesting a FOB on my position...";
