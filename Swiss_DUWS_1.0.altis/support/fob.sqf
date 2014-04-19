@@ -1,22 +1,5 @@
 _position = _this select 0;
 _size = _this select 1;
-zoneFound = false;
-
-{
-if (player distance _x < 250) exitWith {zoneFound = true};
-} forEach WARCOM_zones_controled_by_BLUFOR;
-
-if (!zoneFound) exitWith {
-	["Info",["NO FOB ALLOWED HERE","You Must Be Within 250m of a Green Zone's Center"]] call bis_fnc_showNotification;
-	sleep 15;
-  _art = [player,"fob_support"] call BIS_fnc_addCommMenuItem;
-};
-
-if (commandpointsblu1 < 10) exitWith {
-  ["info",["Not enough command points","Not enough Command Points (10CP required)"]] call bis_fnc_showNotification;
-  sleep 15;
-  _art = [player,"fob_support"] call BIS_fnc_addCommMenuItem;
-};
 
 // REGARDE SI LA ZONE EST OK
 Hint "Requesting a FOB...";
@@ -33,7 +16,7 @@ deleteVehicle _trg;
 
 if (_amountOPFOR > 3) exitWith {
 Hint "This position is not clear from enemies";
-PAPABEAR sidechat "Request denied. Enemies are too close to this position."; 
+PAPABEAR sidechat "Request denied. Enemies are too close to this position.";
 sleep 15;
   _art = [player,"fob_support"] call BIS_fnc_addCommMenuItem;
 };
@@ -57,7 +40,7 @@ _markerstr setMarkerShape "ICON";
 str(_markername) setMarkerType "loc_Bunker";
 str(_markername) setMarkerColor "ColorBLUFOR";
 str(_markername) setMarkerText format["FOB %1",_fobname];
-str(_markername) setMarkerSize [2.5, 2.5]; 
+str(_markername) setMarkerSize [2.5, 2.5];
 
 
 
@@ -74,13 +57,13 @@ DUWS_fnc_fob = {
     _this addaction ["<t color='#15ff00'>FOB/Teleport</t>","dialog\fob\FOBmanageropen.sqf", "", 0, true, true, "", "_this == player"];
     _this addaction ["<t color='#99ff00'>Request units</t>","dialog\request_fob.sqf", "", 0, true, true, "", "_this == player"];
     _this addaction ["<t color='#99ff00'>Squad manager</t>","dialog\squad\squadmng.sqf", "", 0, true, true, "", "_this == player"];
-    
+
 	if (isServer) then {
 	_this addaction ["<t color='#00b7ff'>Rest (wait/save)</t>","savegame.sqf", "", 0, true, true, "", "_this == player"];
 	};
 	if (!isServer) then {
 	_this addaction ["<t color='#00b7ff'>Rest</t>","savegameClient.sqf", "", 0, true, true, "", "_this == player"];
-	};	
+	};
 };
 [_fob,"DUWS_fnc_fob",true,true] spawn BIS_fnc_MP; // [_fob,"DUWS_fnc_fob",nil,true] spawn BIS_fnc_MP;
 

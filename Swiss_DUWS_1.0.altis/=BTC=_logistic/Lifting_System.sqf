@@ -56,24 +56,23 @@ BTC_detach_cargo =
 	detach BTC_cargo_lifted;
 	_name_cargo  = getText (configFile >> "cfgVehicles" >> typeof BTC_cargo_lifted >> "displayName");
 	vehicle player vehicleChat format ["%1 dropped", _name_cargo];
-	if (BTC_cargo_lifted isKindOf "Strategic") then {_obj_fall = [BTC_cargo_lifted] spawn BTC_l_Obj_Fall;} else 
+	if (BTC_cargo_lifted isKindOf "Strategic") then {_obj_fall = [BTC_cargo_lifted] spawn BTC_l_Obj_Fall;} else
 	{
 		_vel = velocity (vehicle player);
-		BTC_cargo_lifted setVelocity _vel;	
+		BTC_cargo_lifted setVelocity _vel;
 	};
 	BTC_cargo_lifted = ObjNull;
 	BTC_lifted = 0;
 };
 BTC_l_camera =
 {
-	if (BTC_l_pip_cond) then 
+	if (BTC_l_pip_cond) then
 	{
 		BTC_l_pip_cond = false;
 		[] call BIS_fnc_liveFeedTerminate;
-	} 
-	else 
+	}
+	else
 	{
-		hint "Activating camera...";
 		BTC_l_pip_cond = true;
 		BTC_l_feed_target = "Land_HelipadEmpty_F" createVehicle (position player);
 		[] spawn {while {BTC_l_pip_cond} do {BTC_l_feed_target setpos [getPos (vehicle player) select 0,(getPos (vehicle player) select 1) + 1,0];sleep 0.1;};deleteVehicle BTC_l_feed_target;};
@@ -88,20 +87,20 @@ BTC_l_camera =
 };
 [] spawn
 {
-	if (BTC_def_pip == 1) then {player addAction [("<t color=""#ED2744"">" + ("Camera On\Off") + "</t>"),BTC_dir_action, [[],BTC_l_camera], -9, false, false, "", "typeOf (vehicle player) in BTC_l_def_veh_pip"];};
-	player addAction [("<t color=""#ED2744"">" + ("Lift") + "</t>"),BTC_dir_action, [[],BTC_attach_cargo], 9, true, false, "", "[] call BTC_lift_check"];
-	player addAction [("<t color=""#ED2744"">" + ("Release") + "</t>"),BTC_dir_action, [[],BTC_detach_cargo], -9, true, false, "", "BTC_lifted == 1"];
-	player addEventHandler ["Respawn", 
+	if (BTC_def_pip == 1) then {player addAction ["<t color='#A4EF75'> Camera On\Off </t>",BTC_dir_action, [[],BTC_l_camera], -9, false, false, "", "typeOf (vehicle player) in BTC_l_def_veh_pip"];};
+	player addAction ["<t color='#A4EF75'> Lift </t>",BTC_dir_action, [[],BTC_attach_cargo], 9, true, false, "", "[] call BTC_lift_check"];
+	player addAction ["<t color='#A4EF75'> Release </t>",BTC_dir_action, [[],BTC_detach_cargo], -9, true, false, "", "BTC_lifted == 1"];
+	player addEventHandler ["Respawn",
 	{
-		[] spawn 
+		[] spawn
 		{
 			WaitUntil {sleep 1; Alive player};
 			BTC_l_pip_cond = false;
 			BTC_cargo    = ObjNull;
 			BTC_lifted   = 0;
-			if (BTC_def_pip == 1) then {player addAction [("<t color=""#ED2744"">" + ("Camera On\Off") + "</t>"),BTC_dir_action, [[],BTC_l_camera], -9, false, false, "", "typeOf (vehicle player) in BTC_l_def_veh_pip"];};
-			player addAction [("<t color=""#ED2744"">" + ("Lift") + "</t>"),BTC_dir_action, [[],BTC_attach_cargo], 9, true, false, "", "[] call BTC_lift_check"];
-			player addAction [("<t color=""#ED2744"">" + ("Release") + "</t>"),BTC_dir_action, [[],BTC_detach_cargo], -9, true, false, "", "BTC_lifted == 1"];
+			if (BTC_def_pip == 1) then {player addAction ["<t color='#A4EF75'>Camera On\Off</t>",BTC_dir_action, [[],BTC_l_camera], -9, false, false, "", "typeOf (vehicle player) in BTC_l_def_veh_pip"];};
+			player addAction ["<t color='#A4EF75'> Lift </t>",BTC_dir_action, [[],BTC_attach_cargo], 9, true, false, "", "[] call BTC_lift_check"];
+			player addAction ["<t color='#A4EF75'> Release </t>",BTC_dir_action, [[],BTC_detach_cargo], -9, true, false, "", "BTC_lifted == 1"];
 		};
 	}];
 };

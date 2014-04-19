@@ -1,14 +1,14 @@
 diag_log format ["------------------ DUWS START ----v08b Modified by BigShot------ player: %1", profileName];
 //////////////////////////////////////////////////////
-//  HOW TO MANUALLY CREATE THE MISSION:   
+//  HOW TO MANUALLY CREATE THE MISSION:
 //  1)YOU MUST PLACE THE HQ LOCATION
 //  2)DEFINE THE CAPTURABLE ZONES
 //  -- YOU CAN ALSO JUST PUT A HQ SOMEWHERE AND LET THE ZONES BEING RANDOMLY GENERATED
-//  -- YOU MUST PLACE MANUALLY THE HQ IF YOU ARE ALREADY PLACING THE ZONES BY HAND 
+//  -- YOU MUST PLACE MANUALLY THE HQ IF YOU ARE ALREADY PLACING THE ZONES BY HAND
 //  3) DONT FORGET TO DEFINE THE VARIABLES BELOW. If you are ONLY placing the HQ by hand, you just need to put "hq_manually_placed" to "true" instead of "false". If you are also placing the zones by hand, make "zones_manually_placed" to "true".
 /////////////////////////////////////////////////////////////
-//  1) In the gamelogic, for the HQ( !! MAKE ONLY ONE HQ !!): _null=[getpos this] execVM "initHQ\BluHQinit.sqf" 
-// 
+//  1) In the gamelogic, for the HQ( !! MAKE ONLY ONE HQ !!): _null=[getpos this] execVM "initHQ\BluHQinit.sqf"
+//
 //  2) In the init of gamelogic, to create a capturable enemy zone: _null = ["zone name",pts awarded upon capture, zone radius,getpos this,false/true,false/true] execvm "createzone.sqf";
 //  "zone name": name of the zone
 //  pts awarded upon capture: points you earn when you capture the zone. Also the amount of points of army power you take and receive from the enemy after capture
@@ -32,33 +32,32 @@ diag_log format ["------------------ DUWS START ----v08b Modified by BigShot----
 		dynamic_weather_enable = true;
 		Attack = false;
 		PlayerMrkrs = true;
-		zoneFound = false;
-		
+
 		if (isNil "enable_fast_travel") then
 	{
 	enable_fast_travel = true; // allow fast travel or not
 	};
 	if (isNil "enableChopperFastTravel") then {
 	enableChopperFastTravel = true;  // chopper taxi (support) will fast travel (teleport) or not
-	};	
+	};
 	if (isNil "commandpointsblu1") then
-	{	        
+	{
 		commandpointsblu1 = 20;            // Starting CP
 	};
         if (isNil "blufor_ap") then {blufor_ap = 0;};              // STARTING ARMY POWER
-        opfor_ap = 0; 
+        opfor_ap = 0;
 ///////////////////////////////////////////////////////
 // initialise variables
 //////////////////////////////////////////////////////
 // MOST OF THE VALUES ARE BEING OVERWRITTEN BY PLAYER INPUT AT THE BEGINNING
 //////////////////////////////////////////////////////
- 
+
 /////////////////////////////////////////////////////////////
 debugmode = false;  // Debug mode, kind of obsolete
 /// ------------- VALUES UNDER THIS ARE OVERWRITTEN
 zones_number = 3; // Number of capturables zones to create (when zones are created randomly)
 zones_spacing = 1200; // minimum space between 2 zones (in meters) // SOON OBSOLETE
-zones_max_radius = 1000;   // Determine the maximum radius a generated zone can have   
+zones_max_radius = 1000;   // Determine the maximum radius a generated zone can have
 zones_min_radius = 200; // Determine the minium radius a generated zone can have. SHOULD NOT BE UNDER 200.
 ///////////////////////////////////////////////////////
 // This mission will have a harder time generating stuff if a lot of the terrain of the island is sloped, meaning that valid locations will be harder/take longer to find (side missions, mission init).
@@ -85,56 +84,56 @@ waitUntil {scriptDone persistent_stat_script_init};
 	clientisSync = false;
 	fobSwitch = false;
 	player_is_choosing_hqpos = false;
-	
-	
+
+
 
 	if (isNil "amount_zones_created") then
-	{	
+	{
 	amount_zones_created = 0;
 	};
 
 	if (isNil "HQ_pos_found_generated") then
 	{
 	HQ_pos_found_generated = false;
-	}; 	
-	
+	};
+
 	if (isNil "chosen_settings") then
-	{	
+	{
 	chosen_settings = false;
 	};
-	
+
 	if (isNil "chosen_hq_placement") then
-	{	
+	{
 	chosen_hq_placement = false;
 	};
-	
+
 	if (isNil "zoneundercontrolblu") then
-	{	
+	{
 	zoneundercontrolblu = 0;
 	};
 
 	if (isNil "amount_zones_captured") then
-	{	
+	{
 	amount_zones_captured = 0;
 	};
 	if (isNil "savegameNumber") then
-	{	
+	{
 	savegameNumber = 0;
 	};
 	if (isNil "capturedZonesNumber") then
-	{	
+	{
 	capturedZonesNumber = 0;
-	};	
+	};
 	if (isNil "finishedMissionsNumber") then
-	{	
+	{
 	finishedMissionsNumber = 0;
-	};	
+	};
 	if (isNil "OvercastVar") then
-	{	
+	{
 	OvercastVar = 0;
-	};	
+	};
 	if (isNil "FogVar") then
-	{	
+	{
 	FogVar = 0;
 	};
 	if (isNil "Array_of_FOBS") then // this is a special one (if/else)
@@ -151,14 +150,9 @@ waitUntil {scriptDone persistent_stat_script_init};
 	{
 	Array_of_FOBname = [];
 	};
-	if (isNil "WARCOM_zones_controled_by_BLUFOR") then
-	{
-	WARCOM_zones_controled_by_BLUFOR = [];publicVariable "WARCOM_zones_controled_by_BLUFOR";
-	};
 
-	
 	player allowDamage false;
-	
+
 	//Time of Day
 	 if (time < 10) then {
     setDate [2035, 8, 6, (paramsArray select 3), 1];
@@ -166,16 +160,16 @@ waitUntil {scriptDone persistent_stat_script_init};
 
 	#include "dialog\supports_init.hpp"
 	#include "dialog\squad_number_init.hpp"
-	
-	
-		
+
+
+
 //execVM "misc\gps_marker.sqf";
 
 
 if (!isMultiplayer) then {
 	getsize_script = [player] execVM "mapsize.sqf";
-};	
-	
+};
+
 // IF MP
 if (isMultiplayer) then {
 
@@ -185,32 +179,32 @@ if (isMultiplayer) then {
 	player_fatigue = paramsArray select 2;
 	AttackHeli = paramsArray select 4; //disable/enable attack choppers
 	TrkAllPlayer = paramsArray select 5; //disbale/enable player markers
-		
+
 	if (support_armory_available) then {hq_blu1 addaction ["<t color='#ff0066'>Armory</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"];};
 	if (support_halo_available) then {hq_blu1 addAction ["<t color='#15ff00'>HALO (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"];};
-	
+
 	if (support_armory_available) then {_x addaction ["<t color='#ff0066'>Armory</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
-	if (support_halo_available) then {_x addaction ["<t color='#15ff00'>HALO (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);	
-	
-	
+	if (support_halo_available) then {_x addaction ["<t color='#15ff00'>HALO (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
+
+
 	if (_revive_activated == 0) then {vas_onRespawn = true};
 	if (AttackHeli == 0) then {Attack = false};
 	if (AttackHeli == 1) then {Attack = true};
 	if (TrkAllPlayer == 0) then {PlayerMrkrs = false};
-	
-	
+
+
 	PlayerKilledEH = player addEventHandler ["killed", {commandpointsblu1 = commandpointsblu1 - DUWSMP_CP_death_cost; publicVariable "commandpointsblu1"}];
 	"support_specialized_training_available" addPublicVariableEventHandler {lbSetColor [2103, 11, [0, 1, 0, 1]];};
 	"commandpointsblu1" addPublicVariableEventHandler {ctrlSetText [1000, format["%1",commandpointsblu1]];}; // change the shown CP for request dialog
 
-	
-	if (player_fatigue == 0) then {execVM "fatigue.sqf"};	 
 
-    	
+	if (player_fatigue == 0) then {execVM "fatigue.sqf"};
+
+
 	// each time there is a new FOB
 	"Array_of_FOBS" addPublicVariableEventHandler {
-	
-	if (!fobSwitch) then 
+
+	if (!fobSwitch) then
 	{
 		[] execVM "support\FOBreceiveaction.sqf";
 	};
@@ -219,21 +213,21 @@ if (isMultiplayer) then {
 		_fobAmount = count Array_of_FOBS;
 		_fobIndex = _fobAmount - 1;
 		_createdFOB = Array_of_FOBS select _fobIndex;
-		
+
 		[missionNamespace, _createdFOB] call BIS_fnc_addRespawnPosition;
 	};
-	
+
 	if (!isServer) then {
 	"savegameNumber" addPublicVariableEventHandler {[] execVM "savegameClient.sqf";};
 	};
 	if (!isServer) then {
-	"capturedZonesNumber" addPublicVariableEventHandler {[] execVM "persistent\persistent_stats_zones_add.sqf";}; // change the shown CP for request dialog	
+	"capturedZonesNumber" addPublicVariableEventHandler {[] execVM "persistent\persistent_stats_zones_add.sqf";}; // change the shown CP for request dialog
 	};
 	if (!isServer) then {
-	"finishedMissionsNumber" addPublicVariableEventHandler {[] execVM "persistent\persistent_stats_missions_total.sqf";}; // change the shown CP for request dialog	
+	"finishedMissionsNumber" addPublicVariableEventHandler {[] execVM "persistent\persistent_stats_missions_total.sqf";}; // change the shown CP for request dialog
 	};
-		
-		
+
+
     if (isServer) then { // SERVER INIT
 	DUWS_host_start = false;
 	publicVariable "DUWS_host_start";
@@ -241,23 +235,23 @@ if (isMultiplayer) then {
 	getsize_script = [player] execVM "mapsize.sqf";
 	DUWS_host_start = true;
 	publicVariable "DUWS_host_start";
-	
- 
- 
+
+
+
 
 	// init High Command
 	_handle = [] execVM "dialog\hc_init.sqf";
 	waitUntil {scriptDone getsize_script};
 	};
 
-		
+
 };
 
 
 
 
 
-if (isServer) then 
+if (isServer) then
 {
 
 _null = [] execVM "dialog\startup\hq_placement\placement.sqf";
@@ -268,7 +262,7 @@ waitUntil {chosen_hq_placement};
 	// create random HQ
 	if (!hq_manually_placed && !player_is_choosing_hqpos) then {
 	hq_create = [20, 0.015] execVM "initHQ\locatorHQ.sqf";
-	waitUntil {scriptDone hq_create};	
+	waitUntil {scriptDone hq_create};
 	};
 
 };
@@ -287,12 +281,12 @@ waitUntil {chosen_hq_placement};
 if (isServer) then {
 // group cleaning script
 clean = [
-	10*60, // seconds to delete dead bodies (0 means don't delete) 
+	10*60, // seconds to delete dead bodies (0 means don't delete)
 	5*60, // seconds to delete dead vehicles (0 means don't delete)
 	10*60, // seconds to delete dropped weapons (0 means don't delete)
 	0, // seconds to deleted planted explosives (0 means don't delete)
 	20*60 // seconds to delete dropped smokes/chemlights (0 means don't delete)
-] execVM 'repetitive_cleanup.sqf';	
+] execVM 'repetitive_cleanup.sqf';
 };
 
 if (!isServer) then { // WHEN CLIENT CONNECTS INIT (might need sleep)
@@ -300,21 +294,21 @@ if (!isServer) then { // WHEN CLIENT CONNECTS INIT (might need sleep)
 	//Time of Day
 	//definedTime = (paramsArray select 3);
     //skipTime definedTime;
-	hintsilent "Waiting for the host to find an HQ...";	
+	hintsilent "Waiting for the host to find an HQ...";
 	waitUntil {HQ_pos_found_generated && time > 0.1};
 	player setpos [(getpos hq_blu1 select 0),(getpos hq_blu1 select 1)+10];
 	_drawicon = [] execVM "inithq\drawIcon.sqf";
-	hintsilent "Waiting for the host to select the campaign parameters...";	
-	waitUntil {chosen_settings};	
+	hintsilent "Waiting for the host to select the campaign parameters...";
+	waitUntil {chosen_settings};
 	[hq_blu1] execVM "initHQ\HQaddactions.sqf";
 	sleep 1;
-	player setdamage 0;	
+	player setdamage 0;
 	player allowDamage true;
 	hintsilent format["Joined game, welcome to %1, %2",worldName,profileName];
 	// init High Command
 	_handle = [] execVM "dialog\hc_init.sqf";
-	[] execVM "dialog\startup\weather_client.sqf";	
-	
+	[] execVM "dialog\startup\weather_client.sqf";
+
 };
 
 if (!isMultiplayer) then {
@@ -334,7 +328,7 @@ execVM "dialog\operative\operator_init.sqf";
 
 
 // Create help for DUWS
-_index = player createDiarySubject ["help","DUWS Manual"]; 
+_index = player createDiarySubject ["help","DUWS Manual"];
 player createDiaryRecord ["help", ["Feedback/bug report", "Please report any bug you see REGARDING THE MISSION by contacting me (BigShot) on the BIS forums, or on the Steam Workshop page for DUWS Modified.<br />Please keep in mind that this mission is still in development. Suggestions/feedbacks are welcome."]];
 player createDiaryRecord ["help", ["Export to another island", "<font color='#FF0000'>How to export to another island:</font color><br />You just need to take the .pbo file and rename it, replacing the name of the current island to the name of the island you want to export the mission to. You don't have anything else to do<br /><br />Example:<br />SP_DUWS.stratis.pbo >>> SP_DUWS.chernarus.pbo"]];
 player createDiaryRecord ["help", ["Credits", "Original Version by Kibot. Modified Version by BigShot. VAS script and TAW view distance by Tonic. ATM Airdrop HALO script by PokerTour. Thanks to Kempco for the mapsize script. Thanks to FrankHH for correcting the typos. Thanks to FunkDooBiesT for his help and his time.<br />Thanks to WolfFlight[TZW] and Amarak[TZW] for their help.<br />repetitive cleanup, SET/GET loadout and Player Marker scripts by aeroson.<br />Thanks to timsk."]];
@@ -381,7 +375,7 @@ capture_island_obj setSimpleTaskDescription ["The ennemy is controlling the isla
 
 // WAIT UNTIL ALL ZONES ARE CAPTURED
 waitUntil {sleep 1; amount_zones_created > 0};
-waitUntil {sleep 3; (zoneundercontrolblu >= amount_zones_created);}; // Toutes les zones sont capturées
+waitUntil {sleep 3; (zoneundercontrolblu >= amount_zones_created);}; // Toutes les zones sont captur?s
 persistent_stat_script_win = [] execVM "persistent\persistent_stats_win.sqf";
 ["TaskSucceeded",["","Island captured!"]] call bis_fnc_showNotification;
 capture_island_obj setTaskState "Succeeded";
@@ -420,7 +414,7 @@ sleep 2;
 sleep 20;
 ["info",["DUWS Manual","Check the manual in the briefing for more info"]] call bis_fnc_showNotification;
 
-profileNamespace setVariable ["profile_DUWS_firstlaunch", false]; 
+profileNamespace setVariable ["profile_DUWS_firstlaunch", false];
 saveProfileNamespace;
 };
 
@@ -458,8 +452,8 @@ execVM "grenadeStop.sqf";
 //Loading player position and gear.
 //TODO: Add bought supports.
 /*
-if(isServer) then 
-{	
+if(isServer) then
+{
 	execVM "persistent\missionSpecific\saveFuncs.sqf";
 	waitUntil {!isNil "saveFuncsLoaded"};
 

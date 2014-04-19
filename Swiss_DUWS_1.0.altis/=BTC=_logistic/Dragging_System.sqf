@@ -29,12 +29,12 @@ BTC_l_drag =
 	if (format ["%1", _drag getVariable "BTC_being_drag"] == "1") exitWith {hint "You can't drag this object! it's being dragged!";};
 	BTC_l_dragging = true;
 	_drag setvariable ["BTC_Being_Drag",1,true];
-	BTC_display_EH_l = (findDisplay 46) displayAddEventHandler ["KeyDown", "if (_this select 1 == 45) then {_anim = [] spawn {sleep 0.01;player switchMove ""acinpknlmstpsraswrfldnon"";};};"];			
+	BTC_display_EH_l = (findDisplay 46) displayAddEventHandler ["KeyDown", "if (_this select 1 == 45) then {_anim = [] spawn {sleep 0.01;player switchMove ""acinpknlmstpsraswrfldnon"";};};"];
 	player playMove "acinpknlmstpsraswrfldnon";
 	_drag attachto [player,[0,2,0.2]];
 	sleep 0.1;
 	if ((position _drag select 2) < - 0.5) then {_drag attachto [player,[0,1,1.2]];};
-	_release = player addaction ["<t color='#00FF00'> Release </t>",BTC_dir_action,[[],BTC_l_release],7,true,false,"","true"];
+	_release = player addaction ["<t color='#A4EF75'> Release </t>",BTC_dir_action,[[],BTC_l_release],7,true,false,"","true"];
 	WaitUntil {!Alive player || ((animationstate player == "acinpknlmstpsraswrfldnon") || (animationstate player == "acinpknlmwlksraswrfldb"))};
 	_act  = 0;
 	While {BTC_l_dragging && vehicle player == player && Alive player && ((animationstate player == "acinpknlmstpsraswrfldnon") || (animationstate player == "acinpknlmwlksraswrfldb"))} do
@@ -44,7 +44,7 @@ BTC_l_drag =
 	player playMoveNow "AmovPknlMstpSrasWrflDnon";BTC_l_dragging = false;
 	player removeAction _release;
 	(findDisplay 46) displayRemoveEventHandler ["KeyDown",BTC_display_EH_l];
-	if !(isNull _drag) then 
+	if !(isNull _drag) then
 	{
 		detach _drag;
 		_drag setvariable ["BTC_Being_Drag",0,true];
@@ -100,7 +100,7 @@ BTC_l_create_camera =
 BTC_l_destroy_camera =
 {
 	player cameraEffect ["TERMINATE", "BACK"];
-	camDestroy BTC_l_camera;	
+	camDestroy BTC_l_camera;
 	BTC_l_camera = objNull;
 	BTC_l_camera_placement = false;
 	BTC_l_camera_created = false;
@@ -127,8 +127,8 @@ BTC_l_keydown =
 			case (_key == 30 && _alt && !_ctrl) : {_dir = getdir BTC_l_plac_obj;BTC_l_plac_obj setDir (_dir - 1);};
 			case (_key == 32 && _alt && !_ctrl) : {_dir = getdir BTC_l_plac_obj;BTC_l_plac_obj setDir (_dir + 1);};
 			case (_key == 46) : {if (BTC_l_camera_placement) then {BTC_l_camera_placement = false;} else {BTC_l_camera_placement = true;};};
-			case (_key == 49) : {if (BTC_l_camera_nvg) then {BTC_l_camera_nvg = false;} else {BTC_l_camera_nvg = true;};};	
-			
+			case (_key == 49) : {if (BTC_l_camera_nvg) then {BTC_l_camera_nvg = false;} else {BTC_l_camera_nvg = true;};};
+
 			case (BTC_l_camera_placement && _key == 30 && _ctrl) : {private ["_n"];_n = (BTC_cam_rel_pos select 0) - 0.5;if !((abs _n) > BTC_l_placement_area) then {BTC_cam_rel_pos = [_n,BTC_cam_rel_pos select 1,BTC_cam_rel_pos select 2];};};
 			case (BTC_l_camera_placement && _key == 32 && _ctrl) : {private ["_n"];_n = (BTC_cam_rel_pos select 0) + 0.5;if !((abs _n) > BTC_l_placement_area) then {BTC_cam_rel_pos = [_n,BTC_cam_rel_pos select 1,BTC_cam_rel_pos select 2];};};
 			case (BTC_l_camera_placement && _key == 31 && _ctrl) : {private ["_n"];_n = (BTC_cam_rel_pos select 1) - 0.5;if !((abs _n) > BTC_l_placement_area) then {BTC_cam_rel_pos = [BTC_cam_rel_pos select 0,_n,BTC_cam_rel_pos select 2];};};
@@ -139,16 +139,16 @@ BTC_l_keydown =
 	};
 };
 
-_drag  = player addaction ["<t color='#00FF00'> Drag </t>",BTC_dir_action,[[],BTC_l_drag],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
-_plac  = player addaction ["<t color='#00FF00'> Place </t>",BTC_dir_action,[[],BTC_l_placement],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
-_eh = player addEventHandler ["respawn", 
+_drag  = player addaction ["<t color='#A4EF75'> Drag </t>",BTC_dir_action,[[],BTC_l_drag],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
+_plac  = player addaction ["<t color='#A4EF75'> Place </t>",BTC_dir_action,[[],BTC_l_placement],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
+_eh = player addEventHandler ["respawn",
 {
-	_actions = [] spawn 
+	_actions = [] spawn
 	{
 		waitUntil {Alive player};
 		BTC_l_dragging     = false;
 		BTC_l_actions_cond = true;
-		_drag  = player addaction ["<t color='#00FF00'> Drag </t>",BTC_dir_action,[[],BTC_l_drag],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
-		_plac  = player addaction ["<t color='#00FF00'> Place </t>",BTC_dir_action,[[],BTC_l_placement],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
+		_drag  = player addaction ["<t color='#A4EF75'> Drag </t>",BTC_dir_action,[[],BTC_l_drag],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
+		_plac  = player addaction ["<t color='#A4EF75'> Place </t>",BTC_dir_action,[[],BTC_l_placement],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
 	};
 }];
