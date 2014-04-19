@@ -372,7 +372,7 @@ class Mission
 			side="LOGIC";
 			class Vehicles
 			{
-				items=1;
+				items=2;
 				class Item0
 				{
 					position[]={17551.779,82.963737,17263.441};
@@ -404,7 +404,7 @@ class Mission
 							typeName="Forced";
 						};
 					};
-					id=0;
+					id=17;
 					side="LOGIC";
 					vehicle="ModuleCurator_F";
 					leader=1;
@@ -412,6 +412,596 @@ class Mission
 					skill=0.60000002;
 					text="zeus1";
 					description="zeus1";
+				};
+			};
+			class Item1
+				{
+					position[]={17657.389,81.739288,17239.355};
+					class args
+					{
+						items=10;
+						class Item0
+						{
+							value="zeus1";
+							parentCls="ModuleCuratorSetAttributesObject_F";
+							typeName="Curator";
+						};
+						class Item1
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesObject_F";
+							typeName="Skill";
+						};
+						class Item2
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesObject_F";
+							typeName="UnitPos";
+						};
+						class Item3
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesObject_F";
+							typeName="Rank";
+						};
+						class Item4
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesObject_F";
+							typeName="Damage";
+						};
+						class Item5
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesObject_F";
+							typeName="Fuel";
+						};
+						class Item6
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesObject_F";
+							typeName="Lock";
+						};
+						class Item7
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesObject_F";
+							typeName="RespawnVehicle";
+						};
+						class Item8
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesObject_F";
+							typeName="RespawnPosition";
+						};
+						class Item9
+						{
+							value="1";
+							parentCls="ModuleCuratorSetAttributesObject_F";
+							typeName="Exec";
+						};
+					};
+					id=18;
+					side="LOGIC";
+					vehicle="ModuleCuratorSetAttributesObject_F";
+					lock="UNLOCKED";
+					skill=0.60000002;
+					text="attr0";
+				};
+				class Item2
+				{
+					position[]={17682.289,82.902832,17270.453};
+					class args
+					{
+						items=10;
+						class Item0
+						{
+							value="zeus1";
+							parentCls="ModuleCuratorSetAttributesPlayer_F";
+							typeName="Curator";
+						};
+						class Item1
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesPlayer_F";
+							typeName="Skill";
+						};
+						class Item2
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesPlayer_F";
+							typeName="UnitPos";
+						};
+						class Item3
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesPlayer_F";
+							typeName="Rank";
+						};
+						class Item4
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesPlayer_F";
+							typeName="Damage";
+						};
+						class Item5
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesPlayer_F";
+							typeName="Fuel";
+						};
+						class Item6
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesPlayer_F";
+							typeName="Lock";
+						};
+						class Item7
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesPlayer_F";
+							typeName="RespawnVehicle";
+						};
+						class Item8
+						{
+							value="0";
+							parentCls="ModuleCuratorSetAttributesPlayer_F";
+							typeName="RespawnPosition";
+						};
+						class Item9
+						{
+							value="1";
+							parentCls="ModuleCuratorSetAttributesPlayer_F";
+							typeName="Exec";
+						};
+					};
+					id=20;
+					side="LOGIC";
+					vehicle="ModuleCuratorSetAttributesPlayer_F";
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+				class Item3
+				{
+					position[]={17576.52,83.994591,17261.584};
+					class args
+					{
+						items=7;
+						class Item0
+						{
+							value="zeus1";
+							parentCls="ModuleCuratorSetSideCosts_F";
+							typeName="Curator";
+						};
+						class Item1
+						{
+							value="1";
+							parentCls="ModuleCuratorSetSideCosts_F";
+							typeName="costSide_West";
+						};
+						class Item2
+						{
+							value="1";
+							parentCls="ModuleCuratorSetSideCosts_F";
+							typeName="costSide_East";
+						};
+						class Item3
+						{
+							value="1";
+							parentCls="ModuleCuratorSetSideCosts_F";
+							typeName="costSide_Guer";
+						};
+						class Item4
+						{
+							value="1";
+							parentCls="ModuleCuratorSetSideCosts_F";
+							typeName="costSide_Civ";
+						};
+						class Item5
+						{
+							value="1";
+							parentCls="ModuleCuratorSetSideCosts_F";
+							typeName="costSide_Empty";
+						};
+						class Item6
+						{
+							value="1";
+							parentCls="ModuleCuratorSetSideCosts_F";
+							typeName="costSide_Logic";
+						};
+					};
+					id=21;
+					side="LOGIC";
+					vehicle="ModuleCuratorSetSideCosts_F";
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+				class Item4
+				{
+					position[]={17600.26,86.13131,17237.863};
+					class args
+					{
+						items=44;
+						class Item0
+						{
+							value="zeus1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="Curator";
+						};
+						class Item1
+						{
+							value="8";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Ammo";
+						};
+						class Item2
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_WeaponsPrimary";
+						};
+						class Item3
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_WeaponsSecondary";
+						};
+						class Item4
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_WeaponsHandguns";
+						};
+						class Item5
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Items";
+						};
+						class Item6
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_ItemsHeadgear";
+						};
+						class Item7
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_ItemsVests";
+						};
+						class Item8
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_ItemsUniforms";
+						};
+						class Item9
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Backpacks";
+						};
+						class Item10
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Intel";
+						};
+						class Item11
+						{
+							value="10";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Mines";
+						};
+						class Item12
+						{
+							value="8";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Explosives";
+						};
+						class Item13
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Objects";
+						};
+						class Item14
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Cargo";
+						};
+						class Item15
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Container";
+						};
+						class Item16
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Garbage";
+						};
+						class Item17
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Flag";
+						};
+						class Item18
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Submerged";
+						};
+						class Item19
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Lamps";
+						};
+						class Item20
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Wreck";
+						};
+						class Item21
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Wreck_sub";
+						};
+						class Item22
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Helpers";
+						};
+						class Item23
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Dead_bodies";
+						};
+						class Item24
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Furniture";
+						};
+						class Item25
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Military";
+						};
+						class Item26
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Signs";
+						};
+						class Item27
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Small_items";
+						};
+						class Item28
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Training";
+						};
+						class Item29
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Fortifications";
+						};
+						class Item30
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Tents";
+						};
+						class Item31
+						{
+							value="1";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Market";
+						};
+						class Item32
+						{
+							value="2";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Structures";
+						};
+						class Item33
+						{
+							value="2";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Structures_Commercial";
+						};
+						class Item34
+						{
+							value="2";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Structures_Cultural";
+						};
+						class Item35
+						{
+							value="2";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Structures_Industrial";
+						};
+						class Item36
+						{
+							value="2";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Structures_Infrastructure";
+						};
+						class Item37
+						{
+							value="2";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Structures_Military";
+						};
+						class Item38
+						{
+							value="2";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Structures_Town";
+						};
+						class Item39
+						{
+							value="2";
+							parentCls="ModuleCuratorSetObjectCosts_F";
+							typeName="cost_Structures_Transport";
+						};
+						class Item40
+						{
+							value="2";
+								parentCls="ModuleCuratorSetObjectCosts_F";
+								typeName="cost_Structures_Village";
+							};
+							class Item41
+							{
+								value="2";
+								parentCls="ModuleCuratorSetObjectCosts_F";
+								typeName="cost_Structures_Walls";
+							};
+							class Item42
+							{
+								value="2";
+								parentCls="ModuleCuratorSetObjectCosts_F";
+								typeName="cost_Structures_Fences";
+							};
+							class Item43
+							{
+								value="2";
+								parentCls="ModuleCuratorSetObjectCosts_F";
+								typeName="cost_Structures_Slums";
+							};
+						};
+						id=22;
+						side="LOGIC";
+						vehicle="ModuleCuratorSetObjectCosts_F";
+						lock="UNLOCKED";
+						skill=0.60000002;
+					};
+					class Item5
+					{
+						position[]={17628.617,86.302818,17231.934};
+						class args
+						{
+							items=16;
+							class Item0
+							{
+								value="zeus1";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="Curator";
+							};
+							class Item1
+							{
+								value="1";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_Men";
+							};
+							class Item2
+							{
+								value="1.2";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_MenDiver";
+							};
+							class Item3
+							{
+								value="1.2";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_MenRecon";
+							};
+							class Item4
+							{
+								value="1.4";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_MenSniper";
+							};
+							class Item5
+							{
+								value="1";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_MenSupport";
+							};
+							class Item6
+							{
+								value="1";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_MenUrban";
+							};
+							class Item7
+							{
+								value="1";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_MenStory";
+							};
+							class Item8
+							{
+								value="2";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_Car";
+							};
+							class Item9
+							{
+								value="4";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_Armored";
+							};
+							class Item10
+							{
+								value="8";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_Air";
+							};
+							class Item11
+							{
+								value="3";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_Autonomous";
+							};
+							class Item12
+							{
+								value="1";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_Static";
+							};
+							class Item13
+							{
+								value="2";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_Ship";
+							};
+							class Item14
+							{
+								value="3";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_Submarine";
+							};
+							class Item15
+							{
+								value="2";
+								parentCls="ModuleCuratorSetCosts_F";
+								typeName="cost_Support";
+							};
+						};
+						id=23;
+						side="LOGIC";
+						vehicle="ModuleCuratorSetCosts_F";
+						lock="UNLOCKED";
+						skill=0.60000002;
+					};
 				};
 			};
 		};
