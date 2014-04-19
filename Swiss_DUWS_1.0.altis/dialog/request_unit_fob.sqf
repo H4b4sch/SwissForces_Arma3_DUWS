@@ -4,57 +4,26 @@ _skill = (blufor_ai_skill select 0)+0.2;
 _skillSF = (blufor_ai_skill select 0)+0.5;
 _spawnpos = [(getpos player select 0)-78, (getpos player select 1)-73.5];
 
-switch (_index) do
-{
-    case 0:  
-    {
-         if (commandpointsblu1 >= 2) then 
-             {
-               hint "Unit ready !";
-               commandpointsblu1 = commandpointsblu1 - 2;
-               ctrlSetText [1000, format["%1",commandpointsblu1]];
-               _group = group player ;
-               "B_Soldier_F" createUnit [_spawnpos, _group, "", _skill, "private"] ;
-             } 
-          else 
-             {
-               hint "Not enough command points";
-             };
-    };
+// Array for classnames and costs
+_unitTypes = ["B_Soldier_F", "B_medic_F", "B_soldier_repair_F"];
+_unitCosts = [2, 4];
 
-    case 1:
-    {
-         if (commandpointsblu1 >= 4) then 
-             {
-               hint "Unit ready !";
-               commandpointsblu1 = commandpointsblu1 - 4;
-               ctrlSetText [1000, format["%1",commandpointsblu1]];
-               _group = group player ;
-               "B_medic_F" createUnit [_spawnpos, _group, "", _skill, "private"] ;
-             } 
-          else 
-             {
-               hint "Not enough command points";
-             };
-    };
+// Set the type and the cost per unit
+_thisUnitType = _unitTypes select _index;
+_thisUnitCost = _unitCosts select _index;
 
-    case 2:
-    {
-         if (commandpointsblu1 >= 4) then 
-             {
-               hint "Unit ready !";
-               commandpointsblu1 = commandpointsblu1 - 4;
-               ctrlSetText [1000, format["%1",commandpointsblu1]];
-               _group = group player ;
-               "B_soldier_repair_F" createUnit [_spawnpos, _group, "", _skill, "private"] ;
-             } 
-          else 
-             {
-               hint "Not enough command points";
-             };
-    }; 		
-	
-};
+if (commandpointsblu1 >= _thisUnitCost) then 
+   {
+     hint "Unit ready !";
+     commandpointsblu1 = commandpointsblu1 - _thisUnitCost;
+     ctrlSetText [1000, format["%1",commandpointsblu1]];
+     _group = group player ;
+     _thisUnitType createUnit [_spawnpos, _group, "zeus1 addCuratorEditableObjects [[this],true];", _skill, "private"] ;
+   } 
+else 
+   {
+     hint "Not enough command points";
+   };
 
 //hint format["AI skill: %1",_skill];            
 publicVariable "commandpointsblu1";

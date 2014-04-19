@@ -447,19 +447,6 @@ hq_blu1 addeventhandler ["firednear", {_this call protect_officer}];
 execVM "grenadeStop.sqf";
 
 
-// Adds every unit to zus
-while {true} do {
-{
-if (side _x == west) then
-{
-zeus1 addCuratorEditableObjects [[_x],true];
-};
-}foreach allUnits;
-
-sleep 1;
-}; 
-
-
 
 //Loading player position and gear.
 //TODO: Add bought supports.
