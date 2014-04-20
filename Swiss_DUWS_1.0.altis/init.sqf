@@ -321,11 +321,11 @@ if (!isMultiplayer) then {
 
 if (isServer) then {
 // initialise the ressources per zone bonus
-_basepoint = [] execVM "zonesundercontrol.sqf";
+_basepoint = [] execVM "misc\zonesCommandPoints.sqf";
 };
 
 // init the bonuses you get when capturing zones
-_basepoint = [] execVM "zones_bonus.sqf";
+_basepoint = [] execVM "misc\zones_bonus.sqf";
 
 // INIT the operative list
 execVM "dialog\operative\operator_init.sqf";
