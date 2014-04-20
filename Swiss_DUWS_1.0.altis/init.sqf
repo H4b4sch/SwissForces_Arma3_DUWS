@@ -187,10 +187,8 @@ if (isMultiplayer) then {
 	TrkAllPlayer = paramsArray select 5; //disbale/enable player markers
 
 	if (support_armory_available) then {hq_blu1 addaction ["<t color='#ff0066'>Armory</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"];};
-	if (support_halo_available) then {hq_blu1 addAction ["<t color='#15ff00'>HALO (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"];};
 
 	if (support_armory_available) then {_x addaction ["<t color='#ff0066'>Armory</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
-	if (support_halo_available) then {_x addaction ["<t color='#15ff00'>HALO (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
 
 
 	if (_revive_activated == 0) then {vas_onRespawn = true};
@@ -337,7 +335,7 @@ execVM "dialog\operative\operator_init.sqf";
 _index = player createDiarySubject ["help","DUWS Manual"];
 player createDiaryRecord ["help", ["Feedback/bug report", "Please report any bug you see REGARDING THE MISSION by contacting me (BigShot) on the BIS forums, or on the Steam Workshop page for DUWS Modified.<br />Please keep in mind that this mission is still in development. Suggestions/feedbacks are welcome."]];
 player createDiaryRecord ["help", ["Export to another island", "<font color='#FF0000'>How to export to another island:</font color><br />You just need to take the .pbo file and rename it, replacing the name of the current island to the name of the island you want to export the mission to. You don't have anything else to do<br /><br />Example:<br />SP_DUWS.stratis.pbo >>> SP_DUWS.chernarus.pbo"]];
-player createDiaryRecord ["help", ["Credits", "Original Version by Kibot. Modified Version by BigShot. VAS script and TAW view distance by Tonic. ATM Airdrop HALO script by PokerTour. Thanks to Kempco for the mapsize script. Thanks to FrankHH for correcting the typos. Thanks to FunkDooBiesT for his help and his time.<br />Thanks to WolfFlight[TZW] and Amarak[TZW] for their help.<br />repetitive cleanup, SET/GET loadout and Player Marker scripts by aeroson.<br />Thanks to timsk."]];
+player createDiaryRecord ["help", ["Credits", "Original Version by Kibot. Modified Version by BigShot. VAS script and TAW view distance by Tonic. Thanks to Kempco for the mapsize script. Thanks to FrankHH for correcting the typos. Thanks to FunkDooBiesT for his help and his time.<br />Thanks to WolfFlight[TZW] and Amarak[TZW] for their help.<br />repetitive cleanup, SET/GET loadout and Player Marker scripts by aeroson.<br />Thanks to timsk."]];
 player createDiaryRecord ["help", ["Command Points (CP)", "Command points are used to purchase vehicles, units and ask for support (like artillery or save the game outside the base). To obtain Command points, you must capture the enemy controlled zones (red zones on the map) or execute side missions. You also receive 3 command points for each zone you have under your control every 30 minutes."]];
 player createDiaryRecord ["help", ["Army Power (AP)", "Army power represent the strenght of the BLUFOR forces present on the island. By capturing enemy positions and accomplishing side missions, you will add Army Power to your army. The attack waves of the BLUFOR army will become stronger."]];
 player createDiaryRecord ["help", ["Experience", "By accomplishing side missions, capturing zones and islands, you will increase your experience. With experience, you will automatically unlock new abilties. Once you have an ability, a description of this ability will be available in the 'ability' tab in the briefing.<br />Capturing an island gives you <font color='#FF0000'>5 XP</font color><br />Achieving a side mission: <font color='#FF0000'>2 XP</font color><br />Capturing a zone: <font color='#FF0000'>1 XP</font color>"]];

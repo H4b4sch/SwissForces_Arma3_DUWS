@@ -23,7 +23,6 @@ while{true}do
 			ctrlSetText [1000, format["%1",commandpointsblu1]];
 			
 		};
-		//hint format["CP %1 :: i %2 :: ZP %3 :: Last ZP %4",commandpointsblu1, _i, _actualZeusPoints, _lastZeusPoints];
 		sleep 2;
 		_i = _i + 1;
 	} forEach Array_Zeus;
@@ -33,7 +32,7 @@ while{true}do
 	_Array_Zeus_Points = [];
 	
 	
-	// After the setting of the commandpoints all zeus get synchronised to it
+	// After the setting of the commandpoints all zeus get synchronized to it
 	{
 		_commandPoints = commandpointsblu1/1000;
 		_zeusPointsBefore = curatorPoints _x;
@@ -44,8 +43,6 @@ while{true}do
 		
 		// Also the zeus-points for next cycle are set
 		_Array_Zeus_Points = _Array_Zeus_Points + [curatorPoints _x];
-		
-		//hint format["CP %1 :: ZP %2",commandpointsblu1, curatorPoints _x];
 		sleep 3;
 		
 	} forEach Array_Zeus;

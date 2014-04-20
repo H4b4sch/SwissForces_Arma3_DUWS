@@ -58,7 +58,6 @@ DUWS_fnc_fob = {
 	_this addaction ["<t color='#ffbe1a'>Player stats</t>","dialog\info\info.sqf", "", 0, true, true, "", "_this == player"];
     _this addAction ["<t color='#ff0066'>HEAL (2CP)</t>", "heal.sqf", "", 0, true, true, "", "_this == player"];
     if (support_armory_available) then {_this addaction ["<t color='#ff0066'>Armory</t>","VAS\open.sqf", "", 0, true, true, "", "_this == player"];};
-    if (support_halo_available) then {_this addAction ["<t color='#15ff00'>HALO (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"];};
     _this addaction ["<t color='#15ff00'>FOB/Teleport</t>","dialog\fob\FOBmanageropen.sqf", "", 0, true, true, "", "_this == player"];
     _this addaction ["<t color='#99ff00'>Request units</t>","dialog\request.sqf", "", 0, true, true, "", "_this == player"];
     _this addaction ["<t color='#99ff00'>Squad manager</t>","dialog\squad\squadmng.sqf", "", 0, true, true, "", "_this == player"];

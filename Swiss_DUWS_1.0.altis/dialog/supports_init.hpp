@@ -21,8 +21,3 @@ support_cluster_available = false;
 	{
 	support_armory_available = false;
 	};
-	
-	if (isNil "support_halo_available") then
-	{
-	support_halo_available = false;
-	};

@@ -34,7 +34,6 @@ disabledAI = 1;
 #include "dialog\operative\identities.hpp"
 #include "dialog\operative\operative.hpp"
 #include "params.hpp"
-// #include "ATM_airdrop\dialog.hpp"
 
 // BTC revive
 Respawn = 3;

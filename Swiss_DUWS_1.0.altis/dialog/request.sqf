@@ -36,7 +36,6 @@
         index_support_cluster = lbAdd [2103, "Mk.20 II CBU(25CP)"];             // 10
 			  index_support_training = lbAdd [2103, "Specialized Infantry training(20CP)"];//11
 			  index_support_boattaxi = lbAdd [2103, "Boat Taxi(2CP)"];				  //12
-			  index_support_halo = lbAdd [2103, "Halo(10CP)"];                     // 13
 			
 //  lbSetCurSel [2103, 0];
 
@@ -93,10 +92,6 @@
              {
               lbSetColor [2103, 12, [0, 1, 0, 1]];
              };
-		  if (support_halo_available) then 
-             {
-              lbSetColor [2103, 13, [0, 1, 0, 1]];
-             }; 
                        
     
     

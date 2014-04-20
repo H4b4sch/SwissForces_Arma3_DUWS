@@ -325,35 +325,7 @@ switch (_index2) do
              {
                hint "Not enough command points";
              };
-    };
-
-case 13:
-    {
-         if (commandpointsblu1 >= 10) then 
-             {
-              if (!support_halo_available) then
-                {
-                  commandpointsblu1 = commandpointsblu1 - 10;
-                  ctrlSetText [1000, format["%1",commandpointsblu1]];
-                  hq_blu1 addaction ["<t color='#15ff00'>HALO (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"];
-                  lbSetColor [2103, 13, [0, 1, 0, 1]];
-                  support_halo_available = true;
-				  {_x addaction ["<t color='#15ff00'>HALO (5CP)</t>", "ATM_airdrop\atm_airdrop.sqf", "", 0, true, true, "", "_this == player"]} forEach (Array_of_FOBS);
-				  playSound "loadgun";
-				 // publicVariable "support_halo_available";
-                  ["halo",["Halo Unlocked","Access Halo Jumping at the HQ and at FOB's"]] call bis_fnc_showNotification;
-                }
-              else
-                {
-                  hint "This support is already available";
-                };
-             } 
-          else 
-             {
-               hint "Not enough command points";
-             };
-    };  	
-	
+    };	
 };
 
 //hint format["index: %1",_index2];
