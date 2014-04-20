@@ -7,62 +7,16 @@
   ctrlSetText [1002, format["%1",WARCOM_blufor_ap]];
     
 // UNITS  
-    _index = lbAdd [2100, "Rifleman(2CP)"];                  // 0
-    _index = lbAdd [2100, "Grenadier(3CP)"];                 // 1
-    _index = lbAdd [2100, "Automatic Rifleman(3CP)"];        // 2
-    _index = lbAdd [2100, "AT Rifleman(3CP)"];               // 3
-    _index = lbAdd [2100, "Medic(4CP)"];                     // 4
-    _index = lbAdd [2100, "AA Specialist(4CP)"];             // 5
-    _index = lbAdd [2100, "Repair Specialist(4CP)"];         // 6 
-    _index = lbAdd [2100, "AT Specialist(4CP)"];             // 7
-    _index = lbAdd [2100, "SF Diver(3CP)"];                  // 8 
-    _index = lbAdd [2100, "Marksman(3CP)"];                  // 9 
-    _index = lbAdd [2100, "Sniper(4CP)"]; 	                 // 10 	
-    _index = lbAdd [2100, "Spotter(3CP)"];                   // 11	
-    _index = lbAdd [2100, "Explosive specialist(4CP)"];      // 12	
+		{
+			_index = lbAdd [2100, format["%1 (%2 CP)",_x select 2, _x select 1] ]
+		}forEach Array_HQ_Units;
 	
   lbSetCurSel [2100, 0];
 
-// SQUADS  
-    _index0 = lbAdd [2101, "Fireteam(8CP)"];                   // 0
-    _index0 = lbAdd [2101, "Rifle Squad(16CP)"];               // 1
-    _index0 = lbAdd [2101, "Weapons Squad(18CP)"];             // 2
-    _index0 = lbAdd [2101, "AT Team(12CP)"];                   // 3
-    _index0 = lbAdd [2101, "AA Team(15CP)"];                   // 4
-    _index0 = lbAdd [2101, "SF Recon Team(12CP)"];             // 5
-    _index0 = lbAdd [2101, "SF Recon Squad(20CP)"];            // 6
-    _index0 = lbAdd [2101, "Divers Team(12CP)"];               // 7
-    _index0 = lbAdd [2101, "Sniper Team(8CP)"];                // 8
-    _index0 = lbAdd [2101, "Medical Team(10CP)"];              // 9
-    _index0 = lbAdd [2101, "Motorized scouts(28CP)"];          // 10
-    _index0 = lbAdd [2101, "Mechanized squad(36CP)"];          // 11
-	_index0 = lbAdd [2101, "Tank Section Slammer(55CP)"];          // 12
-	_index0 = lbAdd [2101, "Tank Platoon AA(70CP)"];          // 13
-  lbSetCurSel [2101, 0];
-
 // VEHICLES  
-    _index1 = lbAdd [2102, "Hunter Unarmed(5CP)"];            // 0
-    _index1 = lbAdd [2102, "Hunter HMG(18CP)"];               // 1
-    _index1 = lbAdd [2102, "Hunter GMG(25CP)"];               // 2
-    _index1 = lbAdd [2102, "AMV-7 Marshall(35CP)"];           // 3
-    _index1 = lbAdd [2102, "HEMTT(2CP)"];                     // 4
-    _index1 = lbAdd [2102, "AH-9 Pawnee (40CP)"];             // 5
-    _index1 = lbAdd [2102, "AH-99 Blackfoot(75CP)"];          // 6
-    _index1 = lbAdd [2102, "MH-9 Hummingbird(15CP)"];         // 7
-    _index1 = lbAdd [2102, "MH-80 Ghosthawk(22CP)"];          // 8
-    _index1 = lbAdd [2102, "IFV-6c Panther(35CP)"];           // 9
-    _index1 = lbAdd [2102, "ATV(Free)"];                      // 10
-    _index1 = lbAdd [2102, "IFV-6c Cheetah(30CP)"];           // 11
-    _index1 = lbAdd [2102, "M2A1 Slammer(55CP)"];             // 12
-    _index1 = lbAdd [2102, "CRV-6e Bobcat(28CP)"];            // 13
-    _index1 = lbAdd [2102, "SF SUV(2CP)"];      		      // 14
-	_index1 = lbAdd [2102, "MLRS Artillary (100CP)"];      		      // 15
-	_index1 = lbAdd [2102, "Scorcher Artillary (100CP)"];      		      // 16
-	_index1 = lbAdd [2102, "Fuel Truck (10CP)"];      		      // 17
-	_index1 = lbAdd [2102, "BUY ONLY AT AIRPORTS A-164 CAS(75CP)"];     // 18
-	_index1 = lbAdd [2102, "M2A4 SlammerUP(55CP)"];    // 19
-	_index1 = lbAdd [2102, "Stomper RCWS Autonomous(20CP)"];    // 20
-	_index1 = lbAdd [2102, "Stomper Autonomous Recon(10CP)"];    // 21
+		{
+			_index1 = lbAdd [2102, format["%1 (%2 CP)",_x select 2, _x select 1] ]
+		}forEach Array_HQ_Vehicles;
 	
   lbSetCurSel [2102, 0];
     
@@ -74,7 +28,7 @@
         index_support_mortar = lbAdd [2103, "Mortar strike(10CP)"];             // 2
         index_support_paradrop = lbAdd [2103, "Airborne troops(20CP)"];         // 3
         index_support_jdam = lbAdd [2103, "JDAM strike(15CP)"];                 // 4
-        index_support_armory = lbAdd [2103, "Armory(Free)"];                     // 5
+        index_support_armory = lbAdd [2103, "Armory(Free)"];                    // 5
         index_support_pFLIR = lbAdd [2103, "Personal FLIR display(20CP)"];      // 6
         index_support_uavrecon = lbAdd [2103, "UAV Recon(10CP)"];               // 7
         index_support_refit = lbAdd [2103, "Vehicle Refit(3CP)"];               // 8

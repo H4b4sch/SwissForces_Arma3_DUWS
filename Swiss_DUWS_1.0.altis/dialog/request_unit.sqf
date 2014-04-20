@@ -5,13 +5,9 @@ _skill = (blufor_ai_skill select 0)+0.2;
 _skillSF = (blufor_ai_skill select 0)+0.5;
 _spawnpos = [(getpos player select 0)-78, (getpos player select 1)-73.5];
 
-// Array for classnames and costs
-_unitTypes = ["B_Soldier_F", "B_Soldier_GL_F", "B_Soldier_AR_F", "B_Soldier_LAT_F", "B_medic_F", "B_soldier_AA_F", "B_soldier_repair_F", "B_soldier_AT_F", "B_Diver_F", "B_soldier_M_F", "B_sniper_F", "B_spotter_F", "B_soldier_exp_F"];
-_unitCosts = [2, 3, 3, 3, 4, 4, 4, 4, 3, 3, 4, 3, 4];
-
 // Set the type and the cost per unit
-_thisUnitType = _unitTypes select _index;
-_thisUnitCost = _unitCosts select _index;
+_thisUnitType = (Array_HQ_Units select _index) select 0;	// UnitType ex. "B_Soldier_F"
+_thisUnitCost = (Array_HQ_Units select _index) select 1;	// Unit Price
 
 if (commandpointsblu1 >= _thisUnitCost) then 
    {
@@ -25,8 +21,5 @@ else
    {
      hint "Not enough command points";
    };
-
-//hint format["AI skill: %1",_skill];            
+        
 publicVariable "commandpointsblu1";
-
-//hint format["index: %1",_index];

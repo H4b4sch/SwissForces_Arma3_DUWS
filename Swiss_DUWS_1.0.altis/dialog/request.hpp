@@ -77,17 +77,19 @@ class requestunitsbutton: RscButton
 	action = "_nil=[]ExecVM ""dialog\request_unit.sqf""";
  	tooltip = "Request a single unit AI to join your own personnal squad";
 };
-class requestsquadbutton: RscButton
-{
-	idc = 1601;
-	text = "REQUEST"; //--- ToDo: Localize;
-	x = 14 * GUI_GRID_W + GUI_GRID_X;
-	y = 15.5 * GUI_GRID_H + GUI_GRID_Y;
-	w = 11.5 * GUI_GRID_W;
-	h = 1 * GUI_GRID_H;
-	action = "_nil=[]ExecVM ""dialog\request_squad.sqf""";
- 	tooltip = "Request an entire squad, accessible through High Command";
-};
+// Squad deleted (no more high command due to zeus)
+// Let this here as placeholder for other objects
+//class requestsquadbutton: RscButton
+//{
+//	idc = 1601;
+//	text = "REQUEST"; //--- ToDo: Localize;
+//	x = 14 * GUI_GRID_W + GUI_GRID_X;
+//	y = 15.5 * GUI_GRID_H + GUI_GRID_Y;
+//	w = 11.5 * GUI_GRID_W;
+//	h = 1 * GUI_GRID_H;
+//	action = "_nil=[]ExecVM ""dialog\request_squad.sqf""";
+//	tooltip = "Request an entire squad, accessible through High Command";
+//};
 class requestvehiclebutton: RscButton
 {
 	idc = 1602;
@@ -201,15 +203,16 @@ class unitlistbox: RscCombo
 	h = 1 * GUI_GRID_H;
 		sizeEx = 0.025;
 };
-class squadlist: RscCombo
-{
-	idc = 2101;
-	x = 14 * GUI_GRID_W + GUI_GRID_X;
-	y = 14 * GUI_GRID_H + GUI_GRID_Y;
-	w = 11.5 * GUI_GRID_W;
-	h = 1 * GUI_GRID_H;
-		sizeEx = 0.025;
-};
+// Squad deleted (no more high command due to zeus)
+//class squadlist: RscCombo
+//{
+//	idc = 2101;
+//	x = 14 * GUI_GRID_W + GUI_GRID_X;
+//	y = 14 * GUI_GRID_H + GUI_GRID_Y;
+//	w = 11.5 * GUI_GRID_W;
+//	h = 1 * GUI_GRID_H;
+//		sizeEx = 0.025;
+//};
 class emptyvehiclelist: RscCombo
 {
 	idc = 2102;

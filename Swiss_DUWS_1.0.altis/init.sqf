@@ -83,6 +83,13 @@ waitUntil {scriptDone persistent_stat_script_init};
 	clientisSync = false;
 	fobSwitch = false;
 	player_is_choosing_hqpos = false;
+	
+	// Set global arrays for what is buyable
+	execVM "setBuyable.sqf";
+	
+	// Used for testing fob related stuff
+	// Players can create an FOB on beginning
+	_sitrep = [player,"fob_support"] call BIS_fnc_addCommMenuItem;
 
 
 

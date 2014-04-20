@@ -23,7 +23,6 @@ disabledAI = 1;
 #include "dialog\squad\squadmng.hpp"
 #include "dialog\squad\rename\renamesquad.hpp"
 #include "dialog\request.hpp"
-#include "dialog\request_fob.hpp"
 #include "dialog\fob\fobmanager.hpp"
 #include "dialog\info\info.hpp"
 #include "dialog\info\reset\reset.hpp"
