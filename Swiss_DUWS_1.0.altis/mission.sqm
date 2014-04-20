@@ -372,7 +372,7 @@ class Mission
 			side="LOGIC";
 			class Vehicles
 			{
-				items=3;
+				items=5;
 				class Item0
 				{
 					position[]={17551.779,82.963737,17263.441};
@@ -415,150 +415,163 @@ class Mission
 				};
 				class Item1
 				{
-					position[]={17657.389,81.739288,17239.355};
+					position[]={17551.779,82.963737,17263.441};
 					class args
 					{
-						items=10;
+						items=4;
 						class Item0
 						{
-							value="zeus1";
-							parentCls="ModuleCuratorSetAttributesObject_F";
-							typeName="Curator";
+							value="player2";
+							parentCls="ModuleCurator_F";
+							typeName="Owner";
 						};
 						class Item1
 						{
-							value="0";
-							parentCls="ModuleCuratorSetAttributesObject_F";
-							typeName="Skill";
+							value="zeus2";
+							parentCls="ModuleCurator_F";
+							typeName="Name";
 						};
 						class Item2
 						{
-							value="0";
-							parentCls="ModuleCuratorSetAttributesObject_F";
-							typeName="UnitPos";
+							value="2";
+							parentCls="ModuleCurator_F";
+							typeName="Addons";
 						};
 						class Item3
 						{
 							value="0";
-							parentCls="ModuleCuratorSetAttributesObject_F";
-							typeName="Rank";
-						};
-						class Item4
-						{
-							value="0";
-							parentCls="ModuleCuratorSetAttributesObject_F";
-							typeName="Damage";
-						};
-						class Item5
-						{
-							value="0";
-							parentCls="ModuleCuratorSetAttributesObject_F";
-							typeName="Fuel";
-						};
-						class Item6
-						{
-							value="0";
-							parentCls="ModuleCuratorSetAttributesObject_F";
-							typeName="Lock";
-						};
-						class Item7
-						{
-							value="0";
-							parentCls="ModuleCuratorSetAttributesObject_F";
-							typeName="RespawnVehicle";
-						};
-						class Item8
-						{
-							value="0";
-							parentCls="ModuleCuratorSetAttributesObject_F";
-							typeName="RespawnPosition";
-						};
-						class Item9
-						{
-							value="1";
-							parentCls="ModuleCuratorSetAttributesObject_F";
-							typeName="Exec";
+							parentCls="ModuleCurator_F";
+							typeName="Forced";
 						};
 					};
 					id=18;
 					side="LOGIC";
-					vehicle="ModuleCuratorSetAttributesObject_F";
+					vehicle="ModuleCurator_F";
+					leader=1;
 					lock="UNLOCKED";
 					skill=0.60000002;
-					text="attr0";
+					text="zeus2";
+					description="zeus2";
 				};
 				class Item2
 				{
-					position[]={17682.289,82.902832,17270.453};
+					position[]={17551.779,82.963737,17263.441};
 					class args
 					{
-						items=10;
+						items=4;
 						class Item0
 						{
-							value="zeus1";
-							parentCls="ModuleCuratorSetAttributesPlayer_F";
-							typeName="Curator";
+							value="player3";
+							parentCls="ModuleCurator_F";
+							typeName="Owner";
 						};
 						class Item1
 						{
-							value="0";
-							parentCls="ModuleCuratorSetAttributesPlayer_F";
-							typeName="Skill";
+							value="zeus3";
+							parentCls="ModuleCurator_F";
+							typeName="Name";
 						};
 						class Item2
 						{
-							value="0";
-							parentCls="ModuleCuratorSetAttributesPlayer_F";
-							typeName="UnitPos";
+							value="2";
+							parentCls="ModuleCurator_F";
+							typeName="Addons";
 						};
 						class Item3
 						{
 							value="0";
-							parentCls="ModuleCuratorSetAttributesPlayer_F";
-							typeName="Rank";
+							parentCls="ModuleCurator_F";
+							typeName="Forced";
 						};
-						class Item4
+					};
+					id=19;
+					side="LOGIC";
+					vehicle="ModuleCurator_F";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+					text="zeus3";
+					description="zeus3";
+				};
+				class Item3
+				{
+					position[]={17551.779,82.963737,17263.441};
+					class args
+					{
+						items=4;
+						class Item0
+						{
+							value="player4";
+							parentCls="ModuleCurator_F";
+							typeName="Owner";
+						};
+						class Item1
+						{
+							value="zeus4";
+							parentCls="ModuleCurator_F";
+							typeName="Name";
+						};
+						class Item2
+						{
+							value="2";
+							parentCls="ModuleCurator_F";
+							typeName="Addons";
+						};
+						class Item3
 						{
 							value="0";
-							parentCls="ModuleCuratorSetAttributesPlayer_F";
-							typeName="Damage";
-						};
-						class Item5
-						{
-							value="0";
-							parentCls="ModuleCuratorSetAttributesPlayer_F";
-							typeName="Fuel";
-						};
-						class Item6
-						{
-							value="0";
-							parentCls="ModuleCuratorSetAttributesPlayer_F";
-							typeName="Lock";
-						};
-						class Item7
-						{
-							value="0";
-							parentCls="ModuleCuratorSetAttributesPlayer_F";
-							typeName="RespawnVehicle";
-						};
-						class Item8
-						{
-							value="0";
-							parentCls="ModuleCuratorSetAttributesPlayer_F";
-							typeName="RespawnPosition";
-						};
-						class Item9
-						{
-							value="1";
-							parentCls="ModuleCuratorSetAttributesPlayer_F";
-							typeName="Exec";
+							parentCls="ModuleCurator_F";
+							typeName="Forced";
 						};
 					};
 					id=20;
 					side="LOGIC";
-					vehicle="ModuleCuratorSetAttributesPlayer_F";
+					vehicle="ModuleCurator_F";
+					leader=1;
 					lock="UNLOCKED";
 					skill=0.60000002;
+					text="zeus4";
+					description="zeus4";
+				};
+				class Item4
+				{
+					position[]={17551.779,82.963737,17263.441};
+					class args
+					{
+						items=4;
+						class Item0
+						{
+							value="player5";
+							parentCls="ModuleCurator_F";
+							typeName="Owner";
+						};
+						class Item1
+						{
+							value="zeus5";
+							parentCls="ModuleCurator_F";
+							typeName="Name";
+						};
+						class Item2
+						{
+							value="2";
+							parentCls="ModuleCurator_F";
+							typeName="Addons";
+						};
+						class Item3
+						{
+							value="0";
+							parentCls="ModuleCurator_F";
+							typeName="Forced";
+						};
+					};
+					id=21;
+					side="LOGIC";
+					vehicle="ModuleCurator_F";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+					text="zeus5";
+					description="zeus5";
 				};
 			};
 		};

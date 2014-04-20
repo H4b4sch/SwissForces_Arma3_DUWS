@@ -64,7 +64,6 @@ zones_min_radius = 200; // Determine the minium radius a generated zone can have
 // Keep that in mind when tweaking the zones amount/radius value.
 /////////////////////////////////////////////////////////
 
-
 // preprocess the qrf file for the EH
 QRF_test = compile preprocessFile "WARCOM\WARCOM_opf_qrf.sqf";
 persistent_stat_script_init = [] execVM "persistent\persistent_stats_init.sqf";
@@ -446,6 +445,12 @@ waitUntil {!isNil "protect_officer"};
 hq_blu1 addeventhandler ["firednear", {_this call protect_officer}];
 execVM "grenadeStop.sqf";
 
+// Zeus
+Array_Zeus = [Zeus1, Zeus2, Zeus3, Zeus4, Zeus5];
+{_x addCuratorEditingArea [0,getpos hq_blu1,100];} forEach Array_Zeus;
+execVM "zeus\commandPointsToZeus.sqf";
+execVM "zeus\zones_fob.sqf";
+execVM "zeus\setPrice.sqf";
 
 
 //Loading player position and gear.

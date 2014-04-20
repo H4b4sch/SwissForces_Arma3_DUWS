@@ -7,7 +7,7 @@ if (commandpointsblu1 < 10) exitWith {
   _art = [player,"fob_support"] call BIS_fnc_addCommMenuItem;
 };
 
-// REGARDE SI LA ZONE EST OK
+// REGARDE SI LA ZONE EST OK MAMMA MIA PER FAVORE
 Hint "Requesting a FOB...";
 player sidechat "Requesting a FOB on my position...";
 
@@ -49,7 +49,6 @@ str(_markername) setMarkerText format["FOB %1",_fobname];
 str(_markername) setMarkerSize [2.5, 2.5];
 
 
-
 sleep 5;
 
 
@@ -83,8 +82,6 @@ _fob addaction ["<t color='#ff0000'>Fortify FOB(4CP)</t>","inithq\fortifyFOB.sqf
 PAPABEAR sidechat "The FOB has been deployed.";
 
 _handle = [_foundPickupPos] execVM "initHQ\guards.sqf";
-
-
 
 // CREATE ZONE NOTIFICATION TRIGGER
 _size = 75;
