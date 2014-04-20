@@ -456,6 +456,7 @@ Array_Zeus = [Zeus1, Zeus2, Zeus3, Zeus4, Zeus5];
 execVM "zeus\commandPointsToZeus.sqf";
 execVM "zeus\zones_fob.sqf";
 execVM "zeus\setPrice.sqf";
+execVM "zeus\addMHQ.sqf";
 
 
 //Loading player position and gear.
