@@ -21,7 +21,7 @@ class Params {
         title = "Time of Day:";
         values[] = {5,14,19,23};
         texts[] = {"Dawn","Afternoon","Dusk","Evening"};
-        default = 19;
+        default = 5;
     };
 
 	class AttackHelis {
@@ -33,6 +33,13 @@ class Params {
 
 	class TrkAllPlayers {
         title = "Show Player Markers on Map:";
+        values[] = {0,1};
+        texts[] = {"Disabled","Enabled"};
+        default = 1;
+    };	
+    
+  class enableZeus {
+        title = "Enable Zeus";
         values[] = {0,1};
         texts[] = {"Disabled","Enabled"};
         default = 1;
