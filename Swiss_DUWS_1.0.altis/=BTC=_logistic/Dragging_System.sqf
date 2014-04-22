@@ -2,18 +2,159 @@
 //Information  /
 //------------/
 // This is a modified version of the Cargo Script of the BTC
-// Logistics script. The script was stripped down to dragging
-// objects only.
-//
+// Logistics script. This script was modified to be a compact version that provides
+// the same functionality of the same script.
 //
 //====================================================================
 
 waitUntil {!isNull player};
 waitUntil {player == player};
 
+BTC_action_cargo   = false;
 BTC_l_dragging     = false;
 BTC_l_actions_cond = true;
 
+//Vehicles to load shit in
+BTC_main_cc =
+[
+	"Motorcycle",1,
+	"Car",6,
+	"Truck",12,
+	"Wheeled_APC",8,
+	"Tank",6,
+	"Ship",6,
+	"Helicopter",10
+];
+
+//Shit to load in vehicles
+BTC_main_rc =
+[
+	"ReammoBox_F",2,
+	"Strategic",2,
+	"StaticWeapon",2,
+	"Wall_F",4,
+	"HBarrier_base_F",4,
+	"Motorcycle",3,
+	"Car",11,
+	"Truck",15,
+	"Wheeled_APC",20,
+	"Tank",25,
+	"Ship",15,
+	"Helicopter",45
+];
+
+BTC_l_check_vehicle =
+{
+	_veh = objNull;_array = [];
+	if (vehicle player == player) then {_array = nearestObjects [player, BTC_def_vehicles, 5];} else {_array = [vehicle player];};
+	if (count _array > 0) then {_veh = _array select 0;};
+	if (!isNull _veh) then
+	{
+		if (isNil {_veh getVariable "BTC_cargo_cont"}) then {_veh setVariable ["BTC_cargo_cont",[],false];};
+		private ["_cargo"];
+		_text = "";
+		_cargo = _veh getVariable "BTC_cargo_cont";
+		_text = _text + "Vehicle: " + getText (configFile >> "cfgVehicles" >> typeof _veh >> "displayName") + format ["<br/>CC: %1/%2",[_veh] call BTC_check_cc,[_veh] call BTC_get_cc] + "<br/>Cargo:<br/>";
+		if (count _cargo > 0) then
+		{
+			{
+				_text = _text + getText (configFile >> "cfgVehicles" >> typeof _x >> "displayName") + format [" [%1]",[_x] call BTC_get_rc] + "<br/>";
+				[_x,_veh] spawn
+				{
+					_obj = _this select 0;
+					_veh = _this select 1;
+					private ["_sleep"];
+					_unload = _veh addaction [("<t color='#A4EF75'>") + (format ["UnLoad %1",getText (configFile >> "cfgVehicles" >> typeof _obj >> "displayName")]) + "</t>",BTC_dir_action,[[_veh,_obj],BTC_l_unload],7,true,false,"","true"];
+					_sleep = time + 15;
+					waitUntil {BTC_action_cargo || (time > _sleep)};
+					_veh removeAction _unload;
+				};
+			} foreach _cargo;
+			hint parseText _text;
+		} else {_text = _text + "Empty";hint parseText _text;};
+	};
+};
+BTC_l_select =
+{
+	_array = nearestObjects [player, BTC_def_drag, 5];
+	if (count _array > 0) then
+	{
+		BTC_cargo_selected = _array select 0;
+		if (format ["%1", BTC_cargo_selected getVariable "BTC_cannot_load"] == "1") then
+		{hint "You can not load this object";BTC_cargo_selected = objNull;} else {hint parseText format ["%1 selected<br/>CR: %2",getText (configFile >> "cfgVehicles" >> typeof BTC_cargo_selected >> "displayName"),[BTC_cargo_selected] call BTC_get_rc];};
+	};
+};
+BTC_l_load =
+{
+	private ["_array","_veh_name","_obj_name"];
+	_veh = objNull;_cargo_cont = [];_cond = true;
+	if (count _this == 0) then {_array = nearestObjects [player, BTC_def_vehicles, 5];} else {_array = _this;};
+	if (count _array > 0) then {_veh = _array select 0;} else {hint "Get closer";};
+	if (!isNull _veh) then
+	{
+		_veh_name = getText (configFile >> "cfgVehicles" >> typeof _veh >> "displayName");
+		_obj_name = getText (configFile >> "cfgVehicles" >> typeof BTC_cargo_selected >> "displayName");
+		if (([_veh] call BTC_check_cc) + ([BTC_cargo_selected] call BTC_get_rc) > ([_veh] call BTC_get_cc)) then {_cond = false;};
+		if (BTC_cargo_selected distance _veh < 15 && speed _veh < 2 && _cond) then
+		{
+			hint format ["Loading %1 in %2",_obj_name,_veh_name];BTC_l_dragging = false;
+			sleep 3;
+			if (Alive BTC_cargo_selected && Alive _veh && BTC_cargo_selected distance _veh < 15 && speed _veh <= 2 && speed _veh >= -2) then
+			{
+				if (isNil {_veh getVariable "BTC_cargo_cont"}) then {_veh setVariable ["BTC_cargo_cont",[],false];};
+				_cargo_cont = _veh getVariable "BTC_cargo_cont";
+				_cargo_cont = _cargo_cont + [BTC_cargo_selected];
+				_veh setVariable ["BTC_cargo_cont",_cargo_cont,true];
+				BTC_cargo_selected attachTo [BTC_cargo_repo,[0,0,BTC_id_repo]];
+				BTC_id_repo = BTC_id_repo + 15;publicVariable "BTC_id_repo";
+				BTC_cargo_selected = objNull;
+				hint format ["%1 has been loaded in %2",_obj_name,_veh_name];
+			} else {hint format ["%1 has not been loaded",_obj_name];};
+		} else {if (!_cond) then {hint "There is no enough space in the cargo!";} else {hint "The object is too far from the vehicle or the vehicle is moving!";};};
+	};
+};
+BTC_l_unload =
+{
+	_veh = _this select 0;
+	_obj = _this select 1;
+	BTC_action_cargo = true;
+	_cargo_cont = _veh getVariable "BTC_cargo_cont";
+	_id = _cargo_cont find _obj;
+	if (_id != -1) then
+	{
+		_veh_name = getText (configFile >> "cfgVehicles" >> typeof _veh >> "displayName");
+		_obj_name = getText (configFile >> "cfgVehicles" >> typeof _obj >> "displayName");
+		hint format ["Unloading %1 from %2",_obj_name,_veh_name];
+		sleep 3;
+		hint format ["%1 has been unloaded",_obj_name,_veh_name];
+		_cargo_cont set [_id,0];
+		_cargo_cont = _cargo_cont - [0];
+		_veh setVariable ["BTC_cargo_cont",_cargo_cont,true];
+		_height = getPos (vehicle player) select 2;
+		deTach _obj;
+		_obj setVelocity [0,0,0];
+		_obj setpos (_veh modelToWorld [-3,0,0]);
+		switch (true) do
+		{
+			case (_height >= 20):
+			{
+				_obj_para = [_veh,_obj,"B_Parachute_02_F"] spawn BTC_l_paradrop;
+			};
+			case ((_height < 20) && (_height >= 2)):
+			{
+				_obj setPos [getpos _veh select 0,getpos _veh select 1,(getpos _veh select 2) -1];
+				sleep 0.1;
+				if (_obj isKindOf "Strategic") then {_obj_fall = [_obj] spawn BTC_l_obj_fall;};
+			};
+			case (_height < 2):
+			{
+				_obj setpos (_veh modelToWorld [-3,0,0]);
+			};
+		};
+	};
+	sleep 1;
+	BTC_action_cargo = false;
+};
 BTC_l_release =
 {
 	BTC_l_dragging = false;
@@ -50,6 +191,68 @@ BTC_l_drag =
 		_drag setvariable ["BTC_Being_Drag",0,true];
 	};
 };
+
+BTC_get_cc =
+{
+	private ["_n","_array_class"];
+	_obj  = _this select 0;
+	_type = typeOf _obj;
+	_cc   = 0;_cond = false;
+	for "_i" from 0 to (count BTC_def_cc - 1) do
+	{
+		if (typeName (BTC_def_cc select _i) == "STRING" && !_cond) then
+		{
+			if (!_cond && _type == (BTC_def_cc select _i)) then {_cc = (BTC_def_cc select (_i + 1));_cond = true;};
+		};
+	};
+	if (!_cond) then
+	{
+		for "_i" from 0 to (count BTC_main_cc - 1) do
+		{
+			if (typeName (BTC_main_cc select _i) == "STRING") then
+			{
+				if (!_cond && _type isKindOf (BTC_main_cc select _i)) then {_cc = (BTC_main_cc select (_i + 1));_cond = true;};
+			};
+		};
+	};
+	_cc
+};
+BTC_get_rc =
+{
+	private ["_n","_array_class"];
+	_obj  = _this select 0;
+	_type = typeOf _obj;
+	_rc   = 0;_cond = false;
+	for "_i" from 0 to (count BTC_def_rc - 1) do
+	{
+		if (typeName (BTC_def_rc select _i) == "STRING" && !_cond) then
+		{
+			if (!_cond && _type == (BTC_def_rc select _i)) then {_rc = (BTC_def_rc select (_i + 1));_cond = true;};
+		};
+	};
+	if (!_cond) then
+	{
+		for "_i" from 0 to (count BTC_main_rc - 1) do
+		{
+			if (typeName (BTC_main_rc select _i) == "STRING" && !_cond) then
+			{
+				if (!_cond && _type isKindOf (BTC_main_rc select _i)) then {_rc = (BTC_main_rc select (_i + 1));_cond = true;};
+			};
+		};
+	};
+	_rc
+};
+BTC_check_cc =
+{
+	private ["_n","_array_class","_cargo"];
+	_veh  = _this select 0;
+	if (isNil {_veh getVariable "BTC_cargo_cont"}) then {_veh setVariable ["BTC_cargo_cont",[],false];};
+	_cargo = _veh getVariable "BTC_cargo_cont";
+	_tot_rc   = 0;
+	{_tot_rc = _tot_rc + ([_x] call BTC_get_rc);} foreach _cargo;
+	_tot_rc
+};
+
 //Placement
 BTC_l_placement =
 {
@@ -114,7 +317,6 @@ BTC_l_keydown =
 		_key  = _this select 1;
 		_ctrl = _this select 3;
 		_alt  = _this select 4;
-		//player globalchat format ["%1 - %2",_key,_this];
 		switch (true) do
 		{
 			case (_key == 14) : {BTC_l_end = true;};
@@ -128,7 +330,6 @@ BTC_l_keydown =
 			case (_key == 32 && _alt && !_ctrl) : {_dir = getdir BTC_l_plac_obj;BTC_l_plac_obj setDir (_dir + 1);};
 			case (_key == 46) : {if (BTC_l_camera_placement) then {BTC_l_camera_placement = false;} else {BTC_l_camera_placement = true;};};
 			case (_key == 49) : {if (BTC_l_camera_nvg) then {BTC_l_camera_nvg = false;} else {BTC_l_camera_nvg = true;};};
-
 			case (BTC_l_camera_placement && _key == 30 && _ctrl) : {private ["_n"];_n = (BTC_cam_rel_pos select 0) - 0.5;if !((abs _n) > BTC_l_placement_area) then {BTC_cam_rel_pos = [_n,BTC_cam_rel_pos select 1,BTC_cam_rel_pos select 2];};};
 			case (BTC_l_camera_placement && _key == 32 && _ctrl) : {private ["_n"];_n = (BTC_cam_rel_pos select 0) + 0.5;if !((abs _n) > BTC_l_placement_area) then {BTC_cam_rel_pos = [_n,BTC_cam_rel_pos select 1,BTC_cam_rel_pos select 2];};};
 			case (BTC_l_camera_placement && _key == 31 && _ctrl) : {private ["_n"];_n = (BTC_cam_rel_pos select 1) - 0.5;if !((abs _n) > BTC_l_placement_area) then {BTC_cam_rel_pos = [BTC_cam_rel_pos select 0,_n,BTC_cam_rel_pos select 2];};};
@@ -139,6 +340,9 @@ BTC_l_keydown =
 	};
 };
 
+_dlg   = player addaction ["<t color='#A4EF75'> Check Vehicle </t>",BTC_dir_action,[[],BTC_l_check_vehicle],-7,false,false,"","BTC_l_actions_cond && count (nearestObjects [player, BTC_def_vehicles, 5]) > 0 || {vehicle player isKindOf _x} count BTC_def_vehicles > 0"];
+_sel   = player addaction ["<t color='#A4EF75'> Select </t>",BTC_dir_action,[[],BTC_l_select],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
+_load  = player addaction ["<t color='#A4EF75'> Load </t>",BTC_dir_action,[[],BTC_l_load],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && !isNull BTC_cargo_selected && count (nearestObjects [player, BTC_def_vehicles, 5]) > 0"];
 _drag  = player addaction ["<t color='#A4EF75'> Drag </t>",BTC_dir_action,[[],BTC_l_drag],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
 _plac  = player addaction ["<t color='#A4EF75'> Place </t>",BTC_dir_action,[[],BTC_l_placement],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
 _eh = player addEventHandler ["respawn",
@@ -146,8 +350,13 @@ _eh = player addEventHandler ["respawn",
 	_actions = [] spawn
 	{
 		waitUntil {Alive player};
+		BTC_action_cargo   = false;
 		BTC_l_dragging     = false;
 		BTC_l_actions_cond = true;
+
+		_dlg   = player addaction ["<t color='#A4EF75'> Check Vehicle </t>",BTC_dir_action,[[],BTC_l_check_vehicle],-7,false,false,"","BTC_l_actions_cond && count (nearestObjects [player, BTC_def_vehicles, 5]) > 0 || {vehicle player isKindOf _x} count BTC_def_vehicles > 0"];
+		_sel   = player addaction ["<t color='#A4EF75'> Select </t>",BTC_dir_action,[[],BTC_l_select],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
+		_load  = player addaction ["<t color='#A4EF75'> Load </t>",BTC_dir_action,[[],BTC_l_load],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && !isNull BTC_cargo_selected && count (nearestObjects [player, BTC_def_vehicles, 5]) > 0"];
 		_drag  = player addaction ["<t color='#A4EF75'> Drag </t>",BTC_dir_action,[[],BTC_l_drag],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
 		_plac  = player addaction ["<t color='#A4EF75'> Place </t>",BTC_dir_action,[[],BTC_l_placement],-7,false,false,"","BTC_l_actions_cond && vehicle player == player && count (nearestObjects [player, BTC_def_drag, 5]) > 0"];
 	};

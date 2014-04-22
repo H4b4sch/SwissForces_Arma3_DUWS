@@ -4,6 +4,11 @@ Version: 0.13
 Date: 20/03/2013
 Visit us at: http://www.blacktemplars.altervista.org/
 */
+if (isServer) then
+{
+	BTC_id_repo = 10;publicVariable "BTC_id_repo";
+	BTC_cargo_repo = "Land_HBarrierBig_F" createVehicle [- 5000,- 5000,0];publicVariable "BTC_cargo_repo";
+};
 if (isDedicated) exitwith {};
 BTC_active_lift      = 1;
 BTC_active_dragging     = 1;
@@ -51,7 +56,24 @@ if (BTC_active_lift == 1) then
 if (BTC_active_dragging == 1) then
 {
 	_cargo = [] execVM "=BTC=_logistic\Dragging_System.sqf";
+	BTC_def_vehicles = ["Tank","Wheeled_APC","Truck","Car","Helicopter"];
 	BTC_def_drag = ["ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Wall_F","HBarrier_base_F"];
+  BTC_cargo_selected = objNull;
+	BTC_def_cc =
+	[
+		"B_Quadbike_01_F",2,
+		"B_Truck_01_transport_F",10,
+		"B_Truck_01_covered_F",10,
+		"I_Truck_02_covered_F",10,
+		"O_Truck_02_covered_F",10,
+		"I_Truck_02_transport_F",10,
+		"O_Truck_02_transport_F",10,
+		"O_Truck_02_transport_F",10
+	];
+	BTC_def_rc =
+	[
+		"Land_BagBunker_Small_F",4
+	];
 };
 BTC_l_obj_fall =
 {
