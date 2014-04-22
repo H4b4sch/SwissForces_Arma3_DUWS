@@ -470,3 +470,9 @@ if(isServer) then
 	execVM "persistent\missionSpecific\loadAccount.sqf";
 };
 */
+
+while{true}do
+{
+	hint format["CP: %1 :: ZP: %2", commandpointsblu1, curatorPoints Zeus1];
+	sleep 1;
+}

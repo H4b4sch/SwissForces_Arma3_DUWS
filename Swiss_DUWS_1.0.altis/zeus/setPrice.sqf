@@ -13,7 +13,8 @@
 					if(_class == _x select 0) then
 					{
 						_zeusPrice = (_x select 1)/1000;
-						_cost = [true,_zeusPrice];
+						_crewPrice = _zeusPrice+0.012;
+						_cost = [true,_zeusPrice, _crewPrice];
 					};
 				}forEach Array_Zeus_Objects;
 				
