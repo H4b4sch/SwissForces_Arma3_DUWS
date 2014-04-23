@@ -89,7 +89,7 @@ waitUntil {scriptDone persistent_stat_script_init};
 	
 	// Used for testing fob related stuff
 	// Players can create an FOB on beginning
-	_sitrep = [player,"fob_support"] call BIS_fnc_addCommMenuItem;
+	//_sitrep = [player,"fob_support"] call BIS_fnc_addCommMenuItem;
 
 
 
@@ -251,9 +251,24 @@ if (isMultiplayer) then {
 
 };
 
+_helo4Group = creategroup west;
 
+// Setting players into helicopter for intro
+hint format ["%1", position playerZeus1];
+sleep 3;
+_cargoCopter = createVehicle ["I_Heli_Transport_02_F", [190.99005,0.22848341,120.2971], [], 0, "FLY"];
 
+_pilot = _helo4Group createUnit ["B_Soldier_F", [190.99005,0.22848341,80.2971], [], 0, "NONE"];
+_pilot assignAsDriver _cargoCopter;
+_pilot moveindriver _cargoCopter;
 
+_cargoCopter flyInHeight 80;
+_cargoCopter lock true;
+
+playerZeus1 assignAsCargo _cargoCopter;
+playerZeus1 MoveInCargo [_cargoCopter,0];
+hint format ["%1", position playerZeus1];
+sleep 60;
 
 if (isServer) then
 {
