@@ -251,24 +251,7 @@ if (isMultiplayer) then {
 
 };
 
-_helo4Group = creategroup west;
-
-// Setting players into helicopter for intro
-hint format ["%1", position playerZeus1];
-sleep 3;
-_cargoCopter = createVehicle ["I_Heli_Transport_02_F", [190.99005,0.22848341,120.2971], [], 0, "FLY"];
-
-_pilot = _helo4Group createUnit ["B_Soldier_F", [190.99005,0.22848341,80.2971], [], 0, "NONE"];
-_pilot assignAsDriver _cargoCopter;
-_pilot moveindriver _cargoCopter;
-
-_cargoCopter flyInHeight 80;
-_cargoCopter lock true;
-
-playerZeus1 assignAsCargo _cargoCopter;
-playerZeus1 MoveInCargo [_cargoCopter,0];
-hint format ["%1", position playerZeus1];
-sleep 60;
+[] execVM "intro.sqf";
 
 if (isServer) then
 {
@@ -315,7 +298,7 @@ if (!isServer) then { // WHEN CLIENT CONNECTS INIT (might need sleep)
     //skipTime definedTime;
 	hintsilent "Waiting for the host to find an HQ...";
 	waitUntil {HQ_pos_found_generated && time > 0.1};
-	player setpos [(getpos hq_blu1 select 0),(getpos hq_blu1 select 1)+10];
+	//player setpos [(getpos hq_blu1 select 0),(getpos hq_blu1 select 1)+10];
 	_drawicon = [] execVM "inithq\drawIcon.sqf";
 	hintsilent "Waiting for the host to select the campaign parameters...";
 	waitUntil {chosen_settings};

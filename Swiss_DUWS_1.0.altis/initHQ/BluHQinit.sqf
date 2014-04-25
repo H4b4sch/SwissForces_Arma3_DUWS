@@ -74,7 +74,7 @@ _handle = [getpos hq_blu1] execVM "initHQ\fortify.sqf";
 
 
 // TELEPORT PLAYER
-player setpos _hqblu;
+//player setpos _hqblu;
 
 
 //////// HQ GENERATED /////
