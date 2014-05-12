@@ -3,7 +3,7 @@
 <?xml-stylesheet href="squad.xsl?" type="text/xsl"?>
 
 <squad nick="CH">
-<name>Swiss Arma</name>
+<name>Swiss Forces</name>
 <email>N/A</email>
 <web>http://burgherr.me/</web>
 <picture>logo-round-transparent.paa</picture>
@@ -13,8 +13,16 @@
 <name>Kaukassus</name>
 <email>N/A</email>
 <icq>N/A</icq>
-<remark>Logistics, Squad Leader</remark>
+<remark>Squad Leader, Logistics, Autorifleman</remark>
 </member>
+
+<member id="76561198094210838" nick="H4b4sch">
+<name>H4b4sch</name>
+<email>N/A</email>
+<icq>N/A</icq>
+<remark>Squad Leader, Sniper</remark>
+</member>
+</squad>
 
 <member id="76561198052636576" nick="major_max_payne">
 <name>major_max_payne</name>
@@ -30,12 +38,18 @@
 <remark>Medic, Autorifleman</remark>
 </member>
 
-<member id="76561198094210838" nick="H4b4sch">
-<name>H4b4sch</name>
+<member id="76561198094210838" nick="Soul_Fox">
+<name>Soul_Fox</name>
 <email>N/A</email>
 <icq>N/A</icq>
-<remark>Squad Leader, Sniper</remark>
+<remark>Rifleman</remark>
 </member>
 </squad>
 
-
+<member id="76561198094210838" nick="Pegasus">
+<name>Pegasus</name>
+<email>N/A</email>
+<icq>N/A</icq>
+<remark>Pilot</remark>
+</member>
+</squad>
